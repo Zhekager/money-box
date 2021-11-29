@@ -8,7 +8,6 @@ import HomeTab from '../../components/HomeTab';
 import Modal from '../../components/Modal';
 import TransactionForm from '../../components/TransactionForm';
 import ButtonIcon from '../../components/ButtonIcon';
-// import Button from '../../components/Button';
 import useSizeScreen from '../../hooks/useSizeScreen';
 import { HiX } from 'react-icons/hi';
 import Currency from '../../components/Currency';
@@ -16,7 +15,7 @@ import Navigation from '../../components/Navigation';
 import Balance from '../../components/Balance';
 import DiagramTab from '../../components/DiagramTab';
 
-import style from './DashboardPage.module.scss';
+import styles from './DashboardPage.module.scss';
 
 export default function DashboardPage() {
   const sizeScreen = useSizeScreen();
@@ -37,8 +36,8 @@ export default function DashboardPage() {
   return (
     <>
       <Header />
-      <div className={style.dashboard}>
-        <div className={style.wrapper}>
+      <div className={styles.dashboard}>
+        <div className={styles.wrapper}>
           <Media
             queries={{
               mobileSize: '(max-width: 767px)',
@@ -75,7 +74,7 @@ export default function DashboardPage() {
                           <DiagramTab />
                         )}
                       </div>
-                      <aside className={style.dashboard__aside}></aside>
+                      <aside className={styles.dashboard__aside}></aside>
                     </>
                   )}
                 </>
