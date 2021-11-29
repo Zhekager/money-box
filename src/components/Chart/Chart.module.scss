@@ -1,0 +1,53 @@
+@import '../../stylesheet/breakpoints';
+
+.title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 1.5;
+  //letter-spacing: 0.05em;
+  color: #000000;
+  //margin: 30 20px;
+  margin-bottom: 20px;
+  //width: fit-content;
+}
+
+.doughnut canvas {
+  min-width: 100px;
+  min-height: 100px;
+}
+
+.chart {
+  max-width: 400px;
+  margin-bottom: 30px;
+}
+
+@media (min-width: $tablet) {
+  .title {
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+
+  .chart {
+    margin-right: 35px;
+    margin-left: 40px;
+  }
+}
+
+.containerChart {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 0;
+}
+
+@media (min-width: $mobile) and (max-width: 767px) {
+  .title {
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  .containerChart {
+    width: 280px;
+    height: 280px;
+  }
+}
