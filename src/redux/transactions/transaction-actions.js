@@ -1,12 +1,26 @@
 import { createAction } from '@reduxjs/toolkit';
 
-// export const fetchTransRequest = createAction('transaction/fetchTransRequest');
-// export const fetchTransSuccess = createAction('transaction/fetchTransSuccess');
-// export const fetchTransError = createAction('transaction/fetchTransError');
+// getTransactions
+export const getTransactionsRequest = createAction(
+  'transaction/getTransactionsRequest',
+);
+export const getTransactionsSuccess = createAction(
+  'transaction/getTransactionsSuccess',
+);
+export const getTransactionsError = createAction(
+  'transaction/getTransactionsError',
+);
 
-// export const addTransRequest = createAction('transaction/addTransRequest');
-// export const addTransSuccess = createAction('transaction/addTransSuccess');
-// export const addTransError = createAction('transaction/addTransError');
+// addTransactions
+export const addTransactionsRequest = createAction(
+  'transaction/addTransactionsRequest',
+);
+export const addTransactionsSuccess = createAction(
+  'transaction/addTransactionsSuccess',
+);
+export const addTransactionsError = createAction(
+  'transaction/addTransactionsError',
+);
 
 export const filterTransRequest = createAction(
   'transaction/filterTransRequest',
@@ -26,3 +40,28 @@ export const getStatisticsSuccess = createAction(
 export const getStatisticsError = createAction(
   'transactions/getStatisticsError',
 );
+
+///////////////////////
+// edit/delete
+
+// editTransactions
+// export const editTransactionsRequest = createAction(
+//   'transaction/editTransactionsRequest',
+// );
+// export const editTransactionsSuccess = createAction(
+//   'transaction/editTransactionsSuccess',
+// );
+// export const editTransactionsError = createAction(
+//   'transaction/editTransactionsError',
+// );
+
+// deleteTransactions
+// export const deleteTransactionsRequest = createAction(
+//   'transaction/deleteTransactionsRequest',
+// );
+// export const deleteTransactionsSuccess = createAction(
+//   'transaction/deleteTransactionsSuccess',
+// );
+// export const deleteTransactionsError = createAction(
+//   'transaction/deleteTransactionsError',
+// );

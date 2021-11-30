@@ -15,12 +15,6 @@ import {
   getUserByGoogleAuthRequest,
   getUserByGoogleAuthSuccess,
   getUserByGoogleAuthError,
-  addTransRequest,
-  addTransSuccess,
-  addTransError,
-  getTransRequest,
-  getTransSuccess,
-  getTransError,
 } from './auth-actions';
 
 import { toast } from 'react-toastify';
@@ -45,7 +39,6 @@ const token = {
 /*
  * POST @ /users/signup
  * body: { email, password, name }
- * После успешной регистрации добавляем токен в HTTP-заголовок
  */
 
 const register = credentials => async dispatch => {
@@ -53,8 +46,12 @@ const register = credentials => async dispatch => {
 
   try {
     const { data } = await axios.post('/api/users/signup', credentials);
+
     console.log(credentials);
 
+    if (data) {
+      toast.success('Thank you for signing up!');
+    }
     dispatch(registerSuccess(data));
   } catch (error) {
     dispatch(registerError(error));
@@ -84,20 +81,26 @@ const logIn = credentials => async dispatch => {
   dispatch(loginRequest());
 
   try {
+    console.log('Login Credentials', credentials);
     const { data } = await axios.post('/api/users/login', credentials);
     console.log('Token login', data.data.token);
     console.log('Data login', data.data);
     token.set(data.data.token);
+
+    if (data) {
+      toast.success('Welcome to Wallet!');
+    }
+
     dispatch(loginSuccess(data.data));
   } catch (error) {
     dispatch(loginError(error));
 
     if (error.response.status === 400) {
-      return toast.error('Login error! Try login again.');
+      return toast.error('Error! Try log in again.');
     }
 
     if (error.response.status === 401) {
-      return toast.error('error! Try signup');
+      return toast.error('Error! Try sign up');
     }
 
     return toast.error('Something went wrong! Try login again.');
@@ -121,7 +124,7 @@ const logOut = () => async dispatch => {
     dispatch(logoutError(error));
 
     if (error.response.status === 401) {
-      return toast.error('Missing header with authorization token!');
+      return toast.error('Something went wrong! Please reload the page!');
     }
 
     if (error.response.status === 500) {
@@ -160,7 +163,7 @@ const fetchCurrentUser = () => async (dispatch, getState) => {
     dispatch(fetchCurrentUserSuccess(data));
   } catch (error) {
     dispatch(fetchCurrentUserError(error));
-
+    // token.unset();
     if (error.response.status === 401) {
       return toast.error(
         'Missing authorization! Please try to login or signup.',
@@ -188,33 +191,33 @@ const getUserByGoogleAuth = () => async dispatch => {
   }
 };
 
-/////Transactions
+// Transactions
 
-const addTransactions = transaction => async dispatch => {
-  dispatch(addTransRequest());
-  try {
-    const { data } = await axios.post('/api/transactions', transaction);
+// const addTransactions = transaction => async dispatch => {
+//   dispatch(addTransRequest());
+//   try {
+//     const { data } = await axios.post('/api/transactions', transaction);
 
-    console.log('Add data', data.transaction);
+//     console.log('Add data', data.transaction);
 
-    dispatch(addTransSuccess(data.transaction));
-  } catch (error) {
-    dispatch(addTransError(error.message));
-  }
-};
+//     dispatch(addTransSuccess(data.transaction));
+//   } catch (error) {
+//     dispatch(addTransError(error.message));
+//   }
+// };
 
-const getTransactions = () => async dispatch => {
-  dispatch(getTransRequest());
-  try {
-    const { data } = await axios.get('/api/transactions');
+// const getTransactions = () => async dispatch => {
+//   dispatch(getTransRequest());
+//   try {
+//     const { data } = await axios.get('/api/transactions');
 
-    console.log('Fetch data', data);
+//     console.log('Fetch data', data);
 
-    dispatch(getTransSuccess(data.data.result));
-  } catch (error) {
-    dispatch(getTransError(error.message));
-  }
-};
+//     dispatch(getTransSuccess(data.data.result));
+//   } catch (error) {
+//     dispatch(getTransError(error.message));
+//   }
+// };
 
 const authOperations = {
   register,
@@ -222,8 +225,8 @@ const authOperations = {
   logOut,
   fetchCurrentUser,
   getUserByGoogleAuth,
-  addTransactions,
-  getTransactions,
+  // addTransactions,
+  // getTransactions,
 };
 
 export default authOperations;

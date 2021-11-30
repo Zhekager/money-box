@@ -12,14 +12,16 @@ import {
   fetchCurrentUserRequest,
   fetchCurrentUserSuccess,
   fetchCurrentUserError,
+  getUserByGoogleAuthRequest,
   getUserByGoogleAuthSuccess,
-  addTransRequest,
-  addTransSuccess,
-  addTransError,
-  getTransRequest,
-  getTransSuccess,
-  getTransError,
+  getUserByGoogleAuthError,
 } from './auth-actions';
+
+import {
+  addTransactionsSuccess,
+  // editTransactionsSuccess,
+  // deleteTransactionsSuccess,
+} from '../transactions/transaction-actions';
 
 const user = createReducer(
   { name: null, email: null },
@@ -28,17 +30,18 @@ const user = createReducer(
     [loginSuccess]: (_, { payload }) => payload,
     [logoutSuccess]: () => ({ name: null, email: null }),
     [fetchCurrentUserSuccess]: (_, { payload }) => payload.user,
+    [fetchCurrentUserError]: () => ({ name: null, email: null }),
     [getUserByGoogleAuthSuccess]: (_, { payload }) => payload.user,
-    [addTransSuccess]: (state, { payload }) => [...state, payload],
-    [getTransSuccess]: (state, { payload }) => [...state, payload],
   },
 );
 
 const token = createReducer(null, {
-  [registerSuccess]: (_, { payload }) => payload.token,
+  // [registerSuccess]: (_, { payload }) => payload.token,
   [loginSuccess]: (_, { payload }) => payload.token,
   [logoutSuccess]: () => null,
   [getUserByGoogleAuthSuccess]: (_, { payload }) => payload.token,
+  [fetchCurrentUserSuccess]: (_, { payload }) => payload.token,
+  [fetchCurrentUserError]: () => null,
 });
 
 const isLoggedIn = createReducer(false, {
@@ -47,39 +50,37 @@ const isLoggedIn = createReducer(false, {
   [loginSuccess]: () => true,
   [loginError]: () => false,
   [logoutSuccess]: () => false,
+  [logoutError]: () => true,
   [fetchCurrentUserSuccess]: () => true,
-  [getUserByGoogleAuthSuccess]: () => true,
   [fetchCurrentUserError]: () => false,
-  [addTransRequest]: () => true,
-  [addTransSuccess]: () => false,
-  [addTransError]: () => false,
-  [getTransSuccess]: () => false,
-  [getTransRequest]: () => true,
-  [getTransError]: () => false,
-
-  // [logoutError]: () => true,
+  [getUserByGoogleAuthSuccess]: () => true,
+  [getUserByGoogleAuthError]: () => false,
 });
 
 const isRegistered = createReducer(false, {
   [registerSuccess]: () => true,
+  [registerError]: () => false,
 });
 
 const isLoading = createReducer(false, {
-  [registerSuccess]: () => false,
   [registerRequest]: () => true,
+  [registerSuccess]: () => false,
   [registerError]: () => false,
-  [loginSuccess]: () => false,
   [loginRequest]: () => true,
+  [loginSuccess]: () => false,
   [loginError]: () => false,
-  [logoutSuccess]: () => false,
   [logoutRequest]: () => true,
+  [logoutSuccess]: () => false,
   [logoutError]: () => false,
-  [fetchCurrentUserSuccess]: () => false,
   [fetchCurrentUserRequest]: () => true,
+  [fetchCurrentUserSuccess]: () => false,
   [fetchCurrentUserError]: () => false,
-  [getTransSuccess]: () => false,
-  [getTransRequest]: () => true,
-  [getTransError]: () => false,
+  [getUserByGoogleAuthRequest]: () => true,
+  [getUserByGoogleAuthSuccess]: () => false,
+  [getUserByGoogleAuthError]: () => false,
+  [addTransactionsSuccess]: () => false,
+  // [editTransactionsSuccess]: () => false,
+  // [deleteTransactionsSuccess]: () => false,
 });
 
 const error = createReducer(null, {
@@ -91,13 +92,16 @@ const error = createReducer(null, {
   [logoutError]: (_, { payload }) => payload,
   [fetchCurrentUserRequest]: () => null,
   [fetchCurrentUserError]: (_, { payload }) => payload,
-  [addTransError]: (_, { payload }) => payload,
-  [addTransRequest]: () => null,
-  [getTransRequest]: () => null,
-  [getTransError]: (_, { payload }) => payload,
+  [getUserByGoogleAuthRequest]: () => null,
+  [getUserByGoogleAuthError]: (_, { payload }) => payload,
 });
 
-// const balance = createReducer(null, {});
+const balance = createReducer(null, {
+  [loginSuccess]: (_, { payload }) => payload.data,
+  [addTransactionsSuccess]: (_, { payload }) => payload.data,
+  // [editTransactionsSuccess]: (_, { payload }) => payload.data,
+  // [deleteTransactionsSuccess]: (_, { payload }) => payload.data,
+});
 
 export default combineReducers({
   user,
@@ -106,5 +110,5 @@ export default combineReducers({
   isRegistered,
   isLoading,
   error,
-  // balance,
+  balance,
 });

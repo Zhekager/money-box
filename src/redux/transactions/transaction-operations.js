@@ -1,18 +1,23 @@
 import axios from 'axios';
-
 import {
-  // fetchTransRequest,
-  // fetchTransSuccess,
-  // fetchTransError,
-  // addTransRequest,
-  // addTransSuccess,
-  // addTransError,
+  getTransactionsRequest,
+  getTransactionsSuccess,
+  getTransactionsError,
+  addTransactionsRequest,
+  addTransactionsSuccess,
+  addTransactionsError,
   filterTransRequest,
   filterTransSuccess,
   filterTransError,
   getStatisticsRequest,
   getStatisticsSuccess,
   getStatisticsError,
+  // editTransactionsRequest,
+  // editTransactionsSuccess,
+  // editTransactionsError,
+  // deleteTransactionsRequest,
+  // deleteTransactionsSuccess,
+  // deleteTransactionsError,
 } from './transaction-actions';
 
 import { BASE_URL } from '../../assets/constants';
@@ -21,31 +26,37 @@ axios.defaults.baseURL = BASE_URL;
 
 // axios.defaults.baseURL = 'https://personal-expenses.herokuapp.com';
 
-// const fetchTransactions = () => async dispatch => {
-//   dispatch(fetchTransRequest());
-//   try {
-//     const { data } = await axios.get('/api/transactions');
+const setToken = token => {
+  if (!axios.defaults.headers.common.Authorization)
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
-//     console.log('Fetch data', data);
+const getTransactions = token => async dispatch => {
+  dispatch(getTransactionsRequest());
+  try {
+    setToken(token);
+    const { data } = await axios.get('/api/transactions');
 
-//     dispatch(fetchTransSuccess(data.data.result));
-//   } catch (error) {
-//     dispatch(fetchTransError(error.message));
-//   }
-// };
+    console.log('Fetch data', data);
 
-// const addTransactions = transaction => async dispatch => {
-//   dispatch(addTransRequest());
-//   try {
-//     const { data } = await axios.post('/api/transactions', transaction);
+    dispatch(getTransactionsSuccess(data.data.result));
+  } catch (error) {
+    dispatch(getTransactionsError(error.message));
+  }
+};
 
-//     console.log('Add data', data);
+const addTransactions = transaction => async dispatch => {
+  dispatch(addTransactionsRequest());
+  try {
+    const { data } = await axios.post('/api/transactions', transaction);
 
-//     dispatch(addTransSuccess(data));
-//   } catch (error) {
-//     dispatch(addTransError(error.message));
-//   }
-// };
+    console.log('Add data', data.data);
+
+    dispatch(addTransactionsSuccess(data.data));
+  } catch (error) {
+    dispatch(addTransactionsError(error.message));
+  }
+};
 
 const filterTransaction = (month, year) => async dispatch => {
   dispatch(filterTransRequest());
@@ -79,10 +90,36 @@ const getStatistics =
     }
   };
 
+/////////////////
+// edit/delete
+
+// const editTransactions = transactionId => async dispatch => {
+//   dispatch(editTransactionsRequest());
+//   try {
+//     const { data } = await axios.patch(`/api/transactions/${transactionId}`);
+//     dispatch(editTransactionsSuccess(data.data));
+//   } catch (error) {
+//     dispatch(editTransactionsError(error.message));
+//   }
+// };
+
+// const deleteTransactions = transactionId => async dispatch => {
+//   dispatch(deleteTransactionsRequest());
+//   try {
+//     const { data } = await axios.delete(`/api/transactions/${transactionId}`);
+//     dispatch(deleteTransactionsSuccess(data.data));
+//   } catch (error) {
+//     dispatch(deleteTransactionsError(error.message));
+//   }
+// };
+
 const transactionOperations = {
-  // fetchTransactions,
+  getTransactions,
+  addTransactions,
   filterTransaction,
-  //addTransactions,
+  getStatistics,
+  // editTransactions,
+  // deleteTransactions,
 };
-export { getStatistics };
+
 export default transactionOperations;
