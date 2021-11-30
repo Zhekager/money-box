@@ -1,24 +1,101 @@
-import logo from './logo.svg';
-import './App.css';
+import { lazy, Suspense, useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import authSelectors from './redux/auth/auth-selectors';
+import authOperations from './redux/auth/auth-operations';
+import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
+import Container from './components/Container';
+import GoogleAuth from './components/AuthForms/GoogleAuth';
+import Spinner from './components/Spinner';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// import './App.module.scss';
+
+const RegistrationPage = lazy(() =>
+  import(
+    './pages/RegistrationPage' /* webpackChunkName: "registration-page" */
+  ),
+);
+const NotFoundPage = lazy(() =>
+  import('./pages/NotFoundPage' /* webpackChunkName: "not-found-page" */),
+);
+const LoginPage = lazy(() =>
+  import('./pages/LoginPage' /* webpackChunkName: "login-page" */),
+);
+const DashboardPage = lazy(() =>
+  import('./pages/DashboardPage' /* webpackChunkName: "dashboard-page" */),
+);
 
 function App() {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(authSelectors.getLoading);
+  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  // const isRegistered = useSelector(authSelectors.getIsRegistered);
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    !isLoading && (
+      <>
+        <Container>
+          <Suspense fallback={<Spinner />}>
+            <Switch>
+              <PublicRoute path="/" exact redirectTo="/dashboard" restricted>
+                <LoginPage />
+              </PublicRoute>
+
+              <PublicRoute path="/signup" redirectTo="/login" restricted>
+                <RegistrationPage />
+              </PublicRoute>
+
+              <PrivateRoute path="/google-user" redirectTo="/dashboard">
+                <GoogleAuth />
+              </PrivateRoute>
+
+              {/* <Route
+                path={routes.google}
+                restricted
+                render={props =>
+                  isLoggedIn ? (
+                    <Redirect to={routes.dashboard} />
+                  ) : isRegistered ? (
+                    <Redirect to={routes.login} />
+                  ) : (
+                    <GoogleAuth />
+                  )
+                }
+              /> */}
+
+              <PublicRoute path="/login" redirectTo="/dashboard" restricted>
+                <LoginPage />
+              </PublicRoute>
+
+              <PrivateRoute path="/dashboard" redirectTo="/login">
+                <DashboardPage />
+              </PrivateRoute>
+
+              <PrivateRoute path="/currency" redirectTo="/login">
+                <DashboardPage />
+              </PrivateRoute>
+
+              <PrivateRoute path="/statistics" redirectTo="/login">
+                <DashboardPage />
+              </PrivateRoute>
+
+              <Route>
+                <NotFoundPage />
+              </Route>
+            </Switch>
+          </Suspense>
+
+          <ToastContainer autoClose={3000} position="top-center" />
+        </Container>
+      </>
+    )
   );
 }
 
