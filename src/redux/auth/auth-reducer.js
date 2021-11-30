@@ -30,7 +30,6 @@ const user = createReducer(
     [loginSuccess]: (_, { payload }) => payload,
     [logoutSuccess]: () => ({ name: null, email: null }),
     [fetchCurrentUserSuccess]: (_, { payload }) => payload.user,
-    [fetchCurrentUserError]: () => ({ name: null, email: null }),
     [getUserByGoogleAuthSuccess]: (_, { payload }) => payload.user,
   },
 );

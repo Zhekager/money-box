@@ -52,9 +52,9 @@ function App() {
                 <RegistrationPage />
               </PublicRoute>
 
-              <PrivateRoute path="/google-user" redirectTo="/dashboard">
+              <PublicRoute path="/google-user" redirectTo="/dashboard">
                 <GoogleAuth />
-              </PrivateRoute>
+              </PublicRoute>
 
               {/* <Route
                 path={routes.google}

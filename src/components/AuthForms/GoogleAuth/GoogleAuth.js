@@ -8,6 +8,7 @@ import styles from './GoogleAuth.module.scss';
 
 const GoogleAuth = () => {
   // const dispatch = useDispatch();
+
   // useEffect(() => dispatch(authOperations.getUserByGoogleAuth()), [dispatch]);
 
   return (

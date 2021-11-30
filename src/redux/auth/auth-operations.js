@@ -81,10 +81,13 @@ const logIn = credentials => async dispatch => {
   dispatch(loginRequest());
 
   try {
-    console.log('Login Credentials', credentials);
+    // console.log('Login Credentials', credentials);
+
     const { data } = await axios.post('/api/users/login', credentials);
+
     console.log('Token login', data.data.token);
     console.log('Data login', data.data);
+
     token.set(data.data.token);
 
     if (data) {
