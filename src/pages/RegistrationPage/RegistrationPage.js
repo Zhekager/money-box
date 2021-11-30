@@ -1,13 +1,13 @@
 import RegistrationForm from '../../components/AuthForms/RegistrationForm';
 import AuthHeading from '../../components/AuthHeading';
 import AuthNav from '../../components/AuthForms/AuthNav';
-import LoginGoogle from '../../components/AuthForms/GoogleAuth';
+import GoogleAuth from '../../components/AuthForms/GoogleAuth';
 import BgPageContainer from '../../components/BgPageContainer';
 import ImgContentContainer from '../../components/AuthForms/ImgContentContainer';
 import AuthContentContainer from '../../components/AuthForms/AuthContentContainer';
-
 import useSizeScreen from '../../hooks/useSizeScreen';
 import { SignupImgPage } from '../../components/IconBtn/SignupImgPage';
+import routes from '../../assets/routes';
 
 import styles from './RegistrationPage.module.scss';
 
@@ -27,8 +27,8 @@ export default function RegistrationPage() {
         <AuthContentContainer authContainer="SignupFormContainer">
           <AuthHeading text="Wallet" />
           <RegistrationForm />
-          <LoginGoogle />
-          <AuthNav content="Log in" path="/login" />
+          <GoogleAuth />
+          <AuthNav content="Log in" path={routes.login} />
         </AuthContentContainer>
       </AuthContentContainer>
     </BgPageContainer>

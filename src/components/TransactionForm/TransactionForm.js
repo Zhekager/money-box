@@ -7,17 +7,19 @@ import DatePicker from 'react-datepicker';
 import { addMonths } from 'date-fns';
 
 //redux
-import { useDispatch } from 'react-redux'; //видалив  useSelector,
+import { useDispatch, useSelector } from 'react-redux';
+import transactionOperations from '../../redux/transactions/transaction-operations';
+import transactionsSelectors from '../../redux/transactions/transaction-selectors';
+// import categorySelectors from '../../redux/categories/categories-selectors';
 
 //components
-// import categorySelectors from '../../redux/categories/categories-selectors';
-import authOperations from '../../redux/auth/auth-operations';
 import ButtonMain from '../ButtonMain';
 import Switch from './Switch';
 import SelectCategory from './SelectCategory';
-
 import { Calendar } from '../IconBtn/Calendar';
+import Spinner from '../Spinner';
 
+// data
 import {
   categories,
   addIncomes,
@@ -29,6 +31,7 @@ import styles from './TransactionForm.module.scss';
 
 export default function TransactionForm({ onClose }) {
   const dispatch = useDispatch();
+  const isLoading = useSelector(transactionsSelectors.getLoading);
   const [chooseType, setChooseType] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [isOpenDate, setIsOpenDate] = useState(false);
@@ -39,7 +42,6 @@ export default function TransactionForm({ onClose }) {
 
   const handleChangeType = () => {
     setChooseType(!chooseType);
-
     setType('+');
   };
 
@@ -65,34 +67,23 @@ export default function TransactionForm({ onClose }) {
     { type, money, category, date, comment },
     { resetForm },
   ) => {
-    // console.log({ type, category, money, date, comment });
-
-    // const categoryCosts = categories.find(category => {
-    //   return category === category.name;
-    // });
-
-    // const categoryIncomes = addIncomes.find(category => {
-    //   return category === category.name;
-    // });
-
     let currentCategory = {};
     if (type === '-') {
       currentCategory = categories.find(i => category === i.name);
     } else {
       currentCategory = addIncomes.find(i => category === i.name);
     }
-    console.log({
-      type,
-      category: currentCategory,
-      money,
-      date,
-      comment,
-    });
+    // console.log({
+    //   type,
+    //   category: currentCategory,
+    //   money,
+    //   date,
+    //   comment,
+    // });
 
     dispatch(
-      authOperations.addTransactions({
+      transactionOperations.addTransactions({
         type,
-        // category: type === '-' ? categoryCosts : categoryIncomes,
         category: currentCategory,
         money,
         date,
@@ -247,7 +238,7 @@ export default function TransactionForm({ onClose }) {
                 button="ButtonSecondary"
               />
 
-              {/* {isLoading && <Spinner />} */}
+              {isLoading && <Spinner />}
             </Form>
           )}
         </Formik>

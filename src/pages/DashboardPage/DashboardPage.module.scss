@@ -101,7 +101,7 @@
     justify-content: space-between;
   }
 
-  .dashboard__aside {
+  .dashboardAside {
     position: absolute;
     left: 390px;
     top: -50px;
@@ -116,4 +116,10 @@
       opacity: 0;
     }
   }
+}
+
+.svgAddPlus {
+  width: 20px;
+  height: 20px;
+  fill: #ffffff;
 }

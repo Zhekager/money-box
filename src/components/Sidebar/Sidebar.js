@@ -1,6 +1,6 @@
 import Media from 'react-media';
 import Navigation from '../Navigation';
-import Currency from './';
+import Currency from '../Currency';
 import Balance from '../Balance';
 
 import styles from './Sidebar.module.scss';

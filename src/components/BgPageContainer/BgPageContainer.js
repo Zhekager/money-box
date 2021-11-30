@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import styles from './BgPageContainer.module.scss';
 
 const BgPageContainer = ({ children, bgContainer }) => {
