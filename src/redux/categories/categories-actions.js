@@ -7,3 +7,5 @@ export const getCategoriesRequest = createAction(
 export const getCategoriesSuccess = createAction(
   'categories/getCategoriesSuccess',
 );
+
+export const getCategoriesError = createAction('categories/getCategoriesError');
