@@ -28,29 +28,29 @@ export default function Currency() {
 
   return (
     <div className={styles.currency}>
-      <ul className={styles.currency__list}>
-        <li className={styles.currency__title}>Currency</li>
-        <li className={styles.currency__title}>Buy</li>
-        <li className={styles.currency__title}>Sell</li>
+      <ul className={styles.currencyList}>
+        <li className={styles.currencyTitle}>Currency</li>
+        <li className={styles.currencyTitle}>Buy</li>
+        <li className={styles.currencyTitle}>Sell</li>
       </ul>
 
-      <ul className={styles.currency__priceList}>
-        <li className={styles.currency__price}>
+      <ul className={styles.currencyPriceList}>
+        <li className={styles.currencyPrice}>
           <span>USD</span>
           <span>{USD.buy}</span>
           <span>{USD.sale}</span>
         </li>
-        <li className={styles.currency__price}>
+        <li className={styles.currencyPrice}>
           <span>EUR</span>
           <span>{EUR.buy}</span>
           <span>{EUR.sale}</span>
         </li>
-        <li className={styles.currency__price}>
+        <li className={styles.currencyPrice}>
           <span>RUB</span>
           <span>{RUB.buy}</span>
           <span>{RUB.sale}</span>
         </li>
-        <li className={styles.currency__price}>
+        <li className={styles.currencyPrice}>
           <span>BTC</span>
           <span>{BTC.buy}</span>
           <span>{BTC.sale}</span>

@@ -1,12 +1,17 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
-
 import {
-  // fetchTransRequest,
-  // fetchTransSuccess,
-  // fetchTransError,
-  //addTransRequest,
-  // addTransSuccess,
-  //addTransError,
+  getTransactionsRequest,
+  getTransactionsSuccess,
+  getTransactionsError,
+  addTransactionsRequest,
+  addTransactionsSuccess,
+  addTransactionsError,
+  // editTransactionsRequest,
+  // editTransactionsSuccess,
+  // editTransactionsError,
+  // deleteTransactionsRequest,
+  // deleteTransactionsSuccess,
+  // deleteTransactionsError,
   filterTransRequest,
   filterTransSuccess,
   filterTransError,
@@ -16,9 +21,12 @@ import {
 } from './transaction-actions';
 
 const result = createReducer([], {
-  // [fetchTransSuccess]: (_, { payload }) => payload,
-  //[addTransSuccess]: (state, { payload }) => [...state, payload],
+  [getTransactionsSuccess]: (_, { payload }) => payload,
+  [addTransactionsSuccess]: (state, { payload }) => [...state, payload],
   [getStatisticsSuccess]: (_, { payload }) => payload,
+  [getTransactionsError]: (_, { payload }) => payload,
+  // [editTransactionsSuccess]: (state, { payload }) => [...state, payload],
+  // [deleteTransactionsSuccess]: (state, { payload }) => [...state, payload],
 });
 
 const filter = createReducer('', {
@@ -26,29 +34,39 @@ const filter = createReducer('', {
 });
 
 const loading = createReducer(false, {
-  // [fetchTransRequest]: () => true,
-  // [fetchTransSuccess]: () => false,
-  // [fetchTransError]: () => false,
-  //[addTransRequest]: () => true,
-  //[addTransSuccess]: () => false,
-  //[addTransError]: () => false,
+  [getTransactionsRequest]: () => true,
+  [getTransactionsSuccess]: () => false,
+  [getTransactionsError]: () => false,
+  [addTransactionsRequest]: () => true,
+  [addTransactionsSuccess]: () => false,
+  [addTransactionsError]: () => false,
   [filterTransRequest]: () => true,
   [filterTransSuccess]: () => false,
   [filterTransError]: () => false,
   [getStatisticsRequest]: () => true,
   [getStatisticsSuccess]: () => false,
   [getStatisticsError]: () => false,
+  // [editTransactionsRequest]: () => true,
+  // [editTransactionsSuccess]: () => false,
+  // [editTransactionsError]: () => false,
+  // [deleteTransactionsRequest]: () => true,
+  // [deleteTransactionsSuccess]: () => false,
+  // [deleteTransactionsError]: () => false,
 });
 
 const error = createReducer(null, {
-  // [fetchTransError]: (_, { payload }) => payload,
-  //[addTransError]: (_, { payload }) => payload,
+  [getTransactionsRequest]: () => null,
+  [getTransactionsError]: (_, { payload }) => payload,
+  [addTransactionsRequest]: () => null,
+  [addTransactionsError]: (_, { payload }) => payload,
   [filterTransError]: (_, { payload }) => payload,
   [getStatisticsError]: (_, { payload }) => payload,
-  // [fetchTransRequest]: () => null,
-  //[addTransRequest]: () => null,
   [filterTransRequest]: () => null,
   [getStatisticsRequest]: () => null,
+  // [editTransactionsRequest]: () => null,
+  // [editTransactionsError]: (_, { payload }) => payload,
+  // [deleteTransactionsRequest]: () => null,
+  // [deleteTransactionsError]: (_, { payload }) => payload,
 });
 
 export default combineReducers({

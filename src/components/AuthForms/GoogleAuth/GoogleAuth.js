@@ -1,19 +1,20 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import authOperations from '../../../redux/auth/auth-operations';
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+// import authOperations from '../../../redux/auth/auth-operations';
 import ButtonIcon from '../../ButtonIcon';
 import { Google } from '../../IconBtn/Google';
 
 import styles from './GoogleAuth.module.scss';
 
 const GoogleAuth = () => {
-  const dispatch = useDispatch();
-  useEffect(() => dispatch(authOperations.getUserByGoogleAuth()), [dispatch]);
+  // const dispatch = useDispatch();
+
+  // useEffect(() => dispatch(authOperations.getUserByGoogleAuth()), [dispatch]);
 
   return (
     <a
       className={styles.Link}
-      href="https://personal-expenses.herokuapp.com/api/users/google"
+      href="https://personal-expenses.herokuapp.com/api/users/google-user"
     >
       <ButtonIcon
         onClick={() => console.log('click')}

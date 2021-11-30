@@ -1,25 +1,40 @@
-@import '../../../stylesheet/breakpoints';
+// @import '../../../stylesheet/breakpoints';
+// @import '../../../stylesheet/variables';
+
+@import '../../../stylesheet/index.scss';
 
 .balance {
-  font-family: Circe;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 27px;
-  z-index: 999;
-  position: absolute;
   margin: 0;
-  text-align: center;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #000000;
-  height: 60px;
+
+  font-family: $main-font;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  color: $black-color;
+  // height: 60px;
+  width: 140px;
+  height: 24px;
+  z-index: 999;
+
+  @media (min-width: $tablet) {
+    width: 93px;
+    height: 27px;
+  }
 }
 
-@media (min-width: $mobile) and (max-width: 767px) {
-  .balance {
-    width: 140px;
-    height: 24px;
-  }
+.balancePositive {
+  composes: balance;
+
+  color: $btn-accent-color;
+}
+
+.balanceNegative {
+  composes: balance;
+
+  color: $dark-pink-color;
 }

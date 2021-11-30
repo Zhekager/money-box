@@ -13,9 +13,9 @@ export default function HomeTabDesktop() {
     <>
       <table className={styles.homeTab}>
         <thead className={styles.homeTabHead}>
-          <tr className={styles.homeTabHead_row}>
+          <tr className={styles.homeTabHeadRow}>
             {tableHeadData.map(head => (
-              <th className={styles.homeTabHead_data} key={head}>
+              <th className={styles.homeTabHeadData} key={head}>
                 {head}
               </th>
             ))}
@@ -24,21 +24,28 @@ export default function HomeTabDesktop() {
         <tbody className={styles.homeTabBody}>
           {arr?.map(
             ({ _id, type, date, money, category, comment, balance }) => (
-              <tr key={_id} className={styles.homeTabBody_row}>
-                <td className={styles.homeTabBody_data}>{date}</td>
-                <td className={styles.homeTabBody_data}>{type}</td>
-                <td className={styles.homeTabBody_data}>{category.name}</td>
-                <td className={styles.homeTabBody_data}>{comment}</td>
+              <tr key={_id} className={styles.homeTabBodyRow}>
+                <td className={styles.homeTabBodyData}>{date}</td>
+                <td className={styles.homeTabBodyData}>{type}</td>
+                <td className={styles.homeTabBodyData}>{category.name}</td>
+                <td className={styles.homeTabBodyData}>{comment}</td>
                 <td
+                  // className={
+                  //   type === '+'
+                  //     ? 'styles.homeTabBody_data homeTabBody_data--plus'
+                  //     : 'styles.homeTabBody_data homeTabBody_data--minus'
+                  // }
+
+                  // type === '+' ? className={styles.homeTabBody_dataPlus} : className={styles.homeTabBody_dataMinus}
                   className={
                     type === '+'
-                      ? 'styles.homeTabBody_data homeTabBody_data--plus'
-                      : 'styles.homeTabBody_data homeTabBody_data--minus'
+                      ? styles.homeTabBodyDataPlus
+                      : styles.homeTabBodyDataMinus
                   }
                 >
                   {money}
                 </td>
-                <td className={styles.homeTabBody_data}>{balance}</td>
+                <td className={styles.homeTabBodyData}>{balance}</td>
               </tr>
             ),
           )}

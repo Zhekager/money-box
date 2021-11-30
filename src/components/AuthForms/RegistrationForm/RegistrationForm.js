@@ -23,7 +23,7 @@ export default function RegistrationForm() {
   const [password, setPassword] = useState('');
   const isLoading = useSelector(authSelectors.getLoading);
 
-  const validationsSchema = Yup.object({
+  const validationsSchema = Yup.object().shape({
     email: Yup.string()
       .email('Enter a valid email')
       .required('Email is required!'),

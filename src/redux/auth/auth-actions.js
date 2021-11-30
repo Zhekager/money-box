@@ -1,20 +1,21 @@
 import { createAction } from '@reduxjs/toolkit';
 
-// pending
+// signup
 export const registerRequest = createAction('register/registerRequest');
-// fulfilled
 export const registerSuccess = createAction('register/registerSuccess');
-// rejected
 export const registerError = createAction('register/registerError');
 
+// login
 export const loginRequest = createAction('login/loginRequest');
 export const loginSuccess = createAction('login/loginSuccess');
 export const loginError = createAction('login/loginError');
 
+// logout
 export const logoutRequest = createAction('logout/logoutRequest');
 export const logoutSuccess = createAction('logout/logoutSuccess');
 export const logoutError = createAction('logout/logoutError');
 
+// currentUser
 export const fetchCurrentUserRequest = createAction(
   'auth/fetchCurrentUserRequest',
 );
@@ -23,6 +24,7 @@ export const fetchCurrentUserSuccess = createAction(
 );
 export const fetchCurrentUserError = createAction('auth/fetchCurrentUserError');
 
+// googleAuth
 export const getUserByGoogleAuthRequest = createAction(
   'auth/getUserByGoogleAuthRequest',
 );
@@ -32,12 +34,8 @@ export const getUserByGoogleAuthSuccess = createAction(
 export const getUserByGoogleAuthError = createAction(
   'auth/getUserByGoogleAuthError',
 );
-////adds transactions
-export const addTransRequest = createAction('auth/addTransRequest');
-export const addTransSuccess = createAction('auth/addTransSuccess');
-export const addTransError = createAction('auth/addTransError');
 
-// getTrans
-export const getTransRequest = createAction('auth/getTransRequest');
-export const getTransSuccess = createAction('auth/getTransSuccess');
-export const getTransError = createAction('auth/getTransError');
+// getTransactions
+// export const getTransactionsRequest = createAction('auth/getTransactionsRequest');
+// export const getTransactionsSuccess = createAction('auth/getTransactionsSuccess');
+// export const getTransactionsError = createAction('auth/getTransactionsError');
