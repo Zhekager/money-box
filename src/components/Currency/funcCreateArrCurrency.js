@@ -1,4 +1,4 @@
-import { fetchData } from './fetchData';
+import { fetchData } from '../../API/api-privat';
 
 export async function createArrCurrency() {
   try {

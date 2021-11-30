@@ -13,7 +13,7 @@ const GoogleAuth = () => {
   return (
     <a
       className={styles.Link}
-      href="https://personal-expenses.herokuapp.com/api/users/google"
+      href="https://personal-expenses.herokuapp.com/api/users/google-user"
     >
       <ButtonIcon
         onClick={() => console.log('click')}

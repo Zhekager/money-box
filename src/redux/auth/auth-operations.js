@@ -25,7 +25,11 @@ import {
 
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://personal-expenses.herokuapp.com';
+import { BASE_URL } from '../../assets/constants';
+
+axios.defaults.baseURL = BASE_URL;
+
+// axios.defaults.baseURL = 'https://personal-expenses.herokuapp.com';
 // axios.defaults.baseURL = 'https://nameless-reef-47827.herokuapp.com/api';
 // axios.defaults.baseURL = 'http://localhost:3000';
 
@@ -49,6 +53,8 @@ const register = credentials => async dispatch => {
 
   try {
     const { data } = await axios.post('/api/users/signup', credentials);
+    console.log(credentials);
+
     dispatch(registerSuccess(data));
   } catch (error) {
     dispatch(registerError(error));

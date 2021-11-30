@@ -1,17 +1,22 @@
 import React from 'react';
-import s from './ChartBalance.module.scss';
+import { useSelector } from 'react-redux';
+import authSelectors from '../../../redux/auth/auth-selectors';
 
-export default function Balance({ consumption }) {
+import styles from './ChartBalance.module.scss';
+
+export default function ChartBalance() {
+  const userBalance = useSelector(authSelectors.getBalance);
+
   return (
-    // <div>
-    //   {consumption ? (
-    //     <p className={s.balancePositive}>&#8372; {consumption}</p>
-    //   ) : (
-    //     <p className={s.balanceNegative}>&#8372; {consumption}</p>
-    //   )}
-    // </div>
     <div>
-      <p className={s.balance}>&#8372; {consumption}</p>
+      <p
+        // className={styles.balance}
+        className={
+          userBalance >= 0 ? styles.balancePositive : styles.balanceNegative
+        }
+      >
+        &#8372; {userBalance}
+      </p>
     </div>
   );
 }

@@ -5,7 +5,11 @@ import {
   getCategoriesError,
 } from './categories-actions';
 
-axios.defaults.baseURL = 'https://personal-expenses.herokuapp.com';
+import { BASE_URL } from '../../assets/constants';
+
+axios.defaults.baseURL = BASE_URL;
+
+// axios.defaults.baseURL = 'https://personal-expenses.herokuapp.com';
 
 const getCategories = () => async dispatch => {
   dispatch(getCategoriesRequest());

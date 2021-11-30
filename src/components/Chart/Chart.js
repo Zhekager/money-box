@@ -1,6 +1,7 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import Balance from './ChartBalance';
+import ChartBalance from './ChartBalance';
+
 import styles from './Chart.module.scss';
 
 export default function Chart() {
@@ -9,7 +10,7 @@ export default function Chart() {
       {/* <p className={styles.title}>Statistics</p> */}{' '}
       {/* уже есть в диаграмм табе */}
       <div className={styles.containerChart}>
-        <Balance />
+        <ChartBalance />
         <div className={styles.doughnut}>
           <Doughnut
             data={{

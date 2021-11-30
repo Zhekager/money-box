@@ -1,5 +1,5 @@
-import Error from '../../components/Error';
+import NotFound from '../../components/NotFound';
 
 export default function NotFoundPage() {
-  return <Error errorContent="404 Page is not found..." />;
+  return <NotFound errorContent="404 Page is not found..." />;
 }

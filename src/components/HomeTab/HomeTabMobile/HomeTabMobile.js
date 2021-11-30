@@ -1,55 +1,65 @@
 import { transactions } from '../../../assets/data/select-data/selectData';
 
-import './HomeTabMobile.scss';
+import styles from './HomeTabMobile.module.scss';
 
 export default function HomeTabMobile() {
-  const res = transactions.data;
+  // const res = transactions.data;
 
   return (
     <>
-      {res.map(item => {
+      {transactions.map(item => {
         const borderColor = item.Expenses ? '#ff6596' : '#24cca7';
         const result = item.Expenses ? '-' : '+';
 
         return (
           <ul
             key={item.id}
+            // className={
+            //   result === '+' ? 'mobile-list mobile-list--plus' : 'mobile-list'
+            // }
             className={
-              result === '+' ? 'mobile-list mobile-list--plus' : 'mobile-list'
+              result === '+' ? styles.mobileListPlus : styles.mobileList
             }
             style={{ borderColor: borderColor }}
           >
-            <li className="mobile-list_item">
-              <span className="mobile-list_category">Date</span>
-              <span className="mobile-list_data">{item.date}</span>
+            <li className="mobileListItem">
+              <span className="mobileListCategory">Date</span>
+              <span className="mobileListData">{item.date}</span>
             </li>
-            <li className="mobile-list_item">
-              <span className="mobile-list_category">Type</span>
-              <span className="mobile-list_data">{result}</span>
+            <li className="mobileListItem">
+              <span className="mobileListCategory">Type</span>
+              <span className="mobileListData">{result}</span>
             </li>
-            <li className="mobile-list_item">
-              <span className="mobile-list_category">Category</span>
-              <span className="mobile-list_data">{item.category}</span>
+            <li className="mobileListItem">
+              <span className="mobileListCategory">Category</span>
+              <span className="mobileListData">{item.category}</span>
             </li>
-            <li className="mobile-list_item">
-              <span className="mobile-list_category">Comment</span>
-              <span className="mobile-list_data">{item.comment}</span>
+            <li className="mobileListItem">
+              <span className="mobileListCategory">Comment</span>
+              <span className="mobileListData">{item.comment}</span>
             </li>
-            <li className="mobile-list_item">
-              <span className="mobile-list_category">Sum</span>
+            <li className="mobileListItem">
+              <span className="mobileListCategory">Sum</span>
               <span
+                // className={
+                //   result === '+'
+                //     ? 'mobile-list_data mobile-list_data--plus'
+                //     : 'mobile-list_data mobile-list_data--minus'
+                // }
+
                 className={
                   result === '+'
-                    ? 'mobile-list_data mobile-list_data--plus'
-                    : 'mobile-list_data mobile-list_data--minus'
+                    ? styles.mobileListDataPlus
+                    : styles.mobileListDataMinus
                 }
+                style={{ borderColor: borderColor }}
               >
                 {item.sum}
               </span>
             </li>
-            <li className="mobile-list_item">
-              <span className="mobile-list_category">Balance</span>
-              <span className="mobile-list_data">{item.balance}</span>
+            <li className="mobileListItem">
+              <span className="mobileListCategory">Balance</span>
+              <span className="mobileListData">{item.balance}</span>
             </li>
           </ul>
         );

@@ -2,7 +2,7 @@
   width: 280px;
   padding-bottom: 289px;
 
-  &__list {
+  .currencyList {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -12,18 +12,19 @@
     margin: 0;
   }
 
-  &__title {
+  .currencyTitle {
     font-weight: 700;
     font-size: 16px;
     line-height: 27px;
     color: #ffffff;
     list-style-type: none;
+
     &:nth-child(2) {
       margin-right: 40px;
     }
   }
 
-  &__priceList {
+  .currencyPriceList {
     background-color: #4a56e2;
     background-repeat: no-repeat;
     background-image: url('../../assets/icons/WaveCurrencyBg.svg');
@@ -34,7 +35,7 @@
     margin: 0;
   }
 
-  &__price {
+  .currencyPrice {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -60,15 +61,15 @@
   .currency {
     width: 348px;
 
-    &__list {
+    .currencyList {
       padding: 17px 30px 16px 30px;
     }
 
-    &__priceList {
+    .currencyPriceList {
       padding: 20px 30px 60px 30px;
     }
 
-    &__price:not(:last-child) {
+    .currencyPrice:not(:last-child) {
       margin-bottom: 23px;
     }
   }

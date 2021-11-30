@@ -15,7 +15,11 @@ import {
   getStatisticsError,
 } from './transaction-actions';
 
-axios.defaults.baseURL = 'https://personal-expenses.herokuapp.com';
+import { BASE_URL } from '../../assets/constants';
+
+axios.defaults.baseURL = BASE_URL;
+
+// axios.defaults.baseURL = 'https://personal-expenses.herokuapp.com';
 
 // const fetchTransactions = () => async dispatch => {
 //   dispatch(fetchTransRequest());
