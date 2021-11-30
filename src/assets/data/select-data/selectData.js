@@ -169,7 +169,7 @@ const transactions = [
     balance: 8700.0,
   },
   {
-    id: '1',
+    id: '4',
     date: '15.11.21',
     Expenses: true,
     category: 'Продукты',
@@ -178,7 +178,7 @@ const transactions = [
     balance: 9700.0,
   },
   {
-    id: '2',
+    id: '5',
     date: '15.11.21',
     Expenses: false,
     category: 'Доход',
@@ -187,7 +187,7 @@ const transactions = [
     balance: 19700.0,
   },
   {
-    id: '3',
+    id: '6',
     date: '15.11.21',
     Expenses: true,
     category: 'Товары для дома',

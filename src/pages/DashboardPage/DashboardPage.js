@@ -14,6 +14,7 @@ import Currency from '../../components/Currency';
 import Navigation from '../../components/Navigation';
 import Balance from '../../components/Balance';
 import DiagramTab from '../../components/DiagramTab';
+import { AddPlus } from '../../components/IconBtn/AddPlus';
 
 import styles from './DashboardPage.module.scss';
 
@@ -59,9 +60,7 @@ export default function DashboardPage() {
                       {location.pathname === routes.dashboard && <Balance />}
                       {location.pathname === routes.currency && <Currency />}
                       {location.pathname === routes.dashboard && <HomeTab />}
-                      {location.pathname === routes.statistics && (
-                        <DiagramTab />
-                      )}
+                      {location.pathname === routes.statistics && <DiagramTab />}
                     </>
                   )}
 
@@ -70,11 +69,9 @@ export default function DashboardPage() {
                       <Sidebar />
                       <div>
                         {location.pathname === routes.dashboard && <HomeTab />}
-                        {location.pathname === routes.statistics && (
-                          <DiagramTab />
-                        )}
+                        {location.pathname === routes.statistics && <DiagramTab />}
                       </div>
-                      <aside className={styles.dashboard__aside}></aside>
+                      <aside className={styles.dashboardAside}></aside>
                     </>
                   )}
                 </>
@@ -87,7 +84,7 @@ export default function DashboardPage() {
             aria-label="Open modal"
             btnClass="ButtonIconAdd"
           >
-            +
+            <AddPlus svg={styles.svgAddPlus} />
           </ButtonIcon>
 
           {showModal && (

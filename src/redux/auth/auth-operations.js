@@ -166,7 +166,7 @@ const fetchCurrentUser = () => async (dispatch, getState) => {
     dispatch(fetchCurrentUserSuccess(data));
   } catch (error) {
     dispatch(fetchCurrentUserError(error));
-    // token.unset();
+    token.unset();
     if (error.response.status === 401) {
       return toast.error(
         'Missing authorization! Please try to login or signup.',

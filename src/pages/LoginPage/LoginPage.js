@@ -1,11 +1,11 @@
 import LoginForm from '../../components/AuthForms/LoginForm';
 import AuthHeading from '../../components/AuthHeading';
 import AuthNav from '../../components/AuthForms/AuthNav';
-import LoginGoogle from '../../components/AuthForms/GoogleAuth';
+import GoogleAuth from '../../components/AuthForms/GoogleAuth';
 import BgPageContainer from '../../components/BgPageContainer';
 import ImgContentContainer from '../../components/AuthForms/ImgContentContainer';
 import AuthContentContainer from '../../components/AuthForms/AuthContentContainer';
-
+import routes from '../../assets/routes';
 import useSizeScreen from '../../hooks/useSizeScreen';
 import { LoginImgPage } from '../../components/IconBtn/LoginImgPage';
 
@@ -27,8 +27,8 @@ export default function LoginPage() {
         <AuthContentContainer authContainer="LoginFormContainer">
           <AuthHeading text="Wallet" />
           <LoginForm />
-          <LoginGoogle />
-          <AuthNav content="Sign up" path="/signup" />
+          <GoogleAuth />
+          <AuthNav content="Sign up" path={routes.signup} />
         </AuthContentContainer>
       </AuthContentContainer>
     </BgPageContainer>
