@@ -46,15 +46,23 @@ const getTransactions = token => async dispatch => {
 };
 
 const addTransactions = transaction => async dispatch => {
+  // const transaction = {
+  //   type,
+  //   category,
+  //   money,
+  //   date,
+  //   comment,
+  // };
+
   dispatch(addTransactionsRequest());
   try {
     const { data } = await axios.post('/api/transactions', transaction);
 
-    console.log('Add data', data.data);
+    console.log('Add data', data.data.result);
 
-    dispatch(addTransactionsSuccess(data.data));
+    dispatch(addTransactionsSuccess(data.data.result));
   } catch (error) {
-    dispatch(addTransactionsError(error.message));
+    dispatch(addTransactionsError(error));
   }
 };
 
@@ -107,7 +115,7 @@ const getStatistics =
 //   dispatch(deleteTransactionsRequest());
 //   try {
 //     const { data } = await axios.delete(`/api/transactions/${transactionId}`);
-//     dispatch(deleteTransactionsSuccess(data.data));
+//     dispatch(deleteTransactionsSuccess(transactionId));
 //   } catch (error) {
 //     dispatch(deleteTransactionsError(error.message));
 //   }

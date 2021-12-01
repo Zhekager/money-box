@@ -73,13 +73,13 @@ export default function TransactionForm({ onClose }) {
     } else {
       currentCategory = addIncomes.find(i => category === i.name);
     }
-    // console.log({
-    //   type,
-    //   category: currentCategory,
-    //   money,
-    //   date,
-    //   comment,
-    // });
+    console.log({
+      type,
+      category: currentCategory,
+      money,
+      date,
+      comment,
+    });
 
     dispatch(
       transactionOperations.addTransactions({

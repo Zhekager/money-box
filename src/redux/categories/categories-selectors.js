@@ -1,4 +1,4 @@
-const getAllCategories = state => state.categories;
+const getAllCategories = state => state.categories.categories;
 
 const loading = state => state.categories.isLoading;
 

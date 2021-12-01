@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
-import { getStatistics } from '../../redux/transactions/transaction-selectors';
+import transactionsSelectors from '../../redux/transactions/transaction-selectors';
 import Chart from '../Chart';
 import Table from '../Table';
 
 import styles from './DiagramTab.module.scss';
 
 export default function DiagramTab() {
-  const data = useSelector(getStatistics);
+  const data = useSelector(transactionsSelectors.getStatistics);
 
   return (
     <section className={styles.SectionStats}>
