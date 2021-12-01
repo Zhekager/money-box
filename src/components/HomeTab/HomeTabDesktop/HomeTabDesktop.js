@@ -1,13 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import transactionOperations from '../../../redux/transactions/transaction-operations';
 import transactionsSelectors from '../../../redux/transactions/transaction-selectors';
+// import authSelectors from '../../../redux/auth/auth-selectors';
 
 import styles from './HomeTabDesktop.module.scss';
 
 const tableHeadData = ['Date', 'Type', 'Category', 'Comment', 'Sum', 'Balance'];
 
 export default function HomeTabDesktop() {
+  const dispatch = useDispatch();
   const arr = useSelector(transactionsSelectors.getTransactions);
+
+  useEffect(() => {
+    dispatch(transactionOperations.getTransactions());
+  }, [dispatch]);
 
   return (
     <>
@@ -27,7 +34,7 @@ export default function HomeTabDesktop() {
               <tr key={_id} className={styles.homeTabBodyRow}>
                 <td className={styles.homeTabBodyData}>{date}</td>
                 <td className={styles.homeTabBodyData}>{type}</td>
-                <td className={styles.homeTabBodyData}>{category.name}</td>
+                <td className={styles.homeTabBodyData}>{category}</td>
                 <td className={styles.homeTabBodyData}>{comment}</td>
                 <td
                   // className={

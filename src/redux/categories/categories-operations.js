@@ -16,7 +16,7 @@ const getCategories = () => async dispatch => {
   try {
     const { data } = await axios.get('/api/categories');
 
-    console.log('Categories', data.result);
+    console.log('Categories', data);
 
     dispatch(getCategoriesSuccess(data));
   } catch (error) {
