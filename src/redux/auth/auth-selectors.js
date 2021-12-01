@@ -16,7 +16,7 @@ const getIsRegistered = state => state.auth.isRegistered;
 
 // const getCategories = state => state.auth.user;
 
-// const getTransactionsUser = state => state.auth.user.transactions;
+const getTransactionsUser = state => state.auth.user.transactions;
 
 // const addTransactionsUser = state => state.auth.user.transactions;
 
@@ -29,7 +29,7 @@ const authSelectors = {
   getToken,
   getBalance,
   getIsRegistered,
-  // getTransactionsUser,
+  getTransactionsUser,
   // addTransactionsUser,
   // getCategories,
 };

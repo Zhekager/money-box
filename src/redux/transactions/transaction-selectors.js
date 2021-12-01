@@ -11,8 +11,8 @@ const getStatistics = state => state.transactions.result;
 //export const getCategoriesTransactions = state => state.transactions.categories;
 //export const totalTransactions = state => getTransactions(state).length;
 
-const getCategoryName = createSelector([getTransactions], transactions => {
-  return transactions.result.find(transaction => transaction.category.name);
+const getCategoryByName = createSelector([getTransactions], transactions => {
+  return transactions.result.find(transaction => transaction.category);
 });
 
 const getVisibleTransactions = createSelector(
@@ -28,6 +28,6 @@ const transactionsSelectors = {
   getError,
   getFilter,
   getStatistics,
-  getCategoryName,
+  getCategoryByName,
 };
 export default transactionsSelectors;

@@ -37,7 +37,7 @@ const getTransactions = token => async dispatch => {
     setToken(token);
     const { data } = await axios.get('/api/transactions');
 
-    console.log('Fetch data', data);
+    console.log('Fetch data', data.data.result);
 
     dispatch(getTransactionsSuccess(data.data.result));
   } catch (error) {
@@ -56,13 +56,14 @@ const addTransactions = transaction => async dispatch => {
 
   dispatch(addTransactionsRequest());
   try {
+    console.log('ADDDDD', transaction);
     const { data } = await axios.post('/api/transactions', transaction);
 
     console.log('Add data', data.data.result);
 
     dispatch(addTransactionsSuccess(data.data.result));
   } catch (error) {
-    dispatch(addTransactionsError(error));
+    dispatch(addTransactionsError(error.message));
   }
 };
 

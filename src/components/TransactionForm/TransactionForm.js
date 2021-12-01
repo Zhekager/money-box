@@ -67,24 +67,25 @@ export default function TransactionForm({ onClose }) {
     { type, money, category, date, comment },
     { resetForm },
   ) => {
-    let currentCategory = {};
-    if (type === '-') {
-      currentCategory = categories.find(i => category === i.name);
-    } else {
-      currentCategory = addIncomes.find(i => category === i.name);
-    }
-    console.log({
-      type,
-      category: currentCategory,
-      money,
-      date,
-      comment,
-    });
+    // let currentCategory = {};
+    // if (type === '-') {
+    //   currentCategory = categories.find(i => category === i.name);
+    // } else {
+    //   currentCategory = addIncomes.find(i => category === i.name);
+    // }
+    // console.log('FFFF', {
+    //   type,
+    //   category,
+    //   money,
+    //   date,
+    //   comment,
+    // });
 
     dispatch(
       transactionOperations.addTransactions({
         type,
-        category: currentCategory,
+        // category: currentCategory,
+        category,
         money,
         date,
         comment,
