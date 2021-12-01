@@ -6,12 +6,9 @@ import {
   getCategoriesError,
 } from './categories-actions';
 
-const categories = createReducer(
-  {},
-  {
-    [getCategoriesSuccess]: (_, { payload }) => payload.data,
-  },
-);
+const categories = createReducer([], {
+  [getCategoriesSuccess]: (_, { payload }) => payload.data.categories,
+});
 
 const isLoading = createReducer(false, {
   [getCategoriesRequest]: () => true,

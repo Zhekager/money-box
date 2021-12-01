@@ -6,7 +6,7 @@ import authOperations from './redux/auth/auth-operations';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
 import Container from './components/Container';
-import GoogleAuth from './components/AuthForms/GoogleAuth';
+// import GoogleAuth from './components/AuthForms/GoogleAuth';
 import Spinner from './components/Spinner';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -52,9 +52,9 @@ function App() {
                 <RegistrationPage />
               </PublicRoute>
 
-              <PublicRoute path="/google-user" redirectTo="/dashboard">
+              {/* <PublicRoute path="/google-user" redirectTo="/dashboard">
                 <GoogleAuth />
-              </PublicRoute>
+              </PublicRoute> */}
 
               {/* <Route
                 path={routes.google}
