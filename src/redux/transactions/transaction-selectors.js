@@ -29,5 +29,6 @@ const transactionsSelectors = {
   getFilter,
   getStatistics,
   getCategoryByName,
+  getVisibleTransactions,
 };
 export default transactionsSelectors;
