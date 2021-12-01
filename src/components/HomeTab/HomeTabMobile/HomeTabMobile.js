@@ -1,65 +1,62 @@
-import { transactions } from '../../../assets/data/select-data/selectData';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import transactionOperations from '../../../redux/transactions/transaction-operations';
+import transactionsSelectors from '../../../redux/transactions/transaction-selectors';
 
 import styles from './HomeTabMobile.module.scss';
 
 export default function HomeTabMobile() {
-  // const res = transactions.data;
+  const dispatch = useDispatch();
+  const arr = useSelector(transactionsSelectors.getTransactions);
+
+  useEffect(() => {
+    dispatch(transactionOperations.getTransactions());
+  }, [dispatch]);
 
   return (
     <>
-      {transactions.map(item => {
-        const borderColor = item.Expenses ? '#ff6596' : '#24cca7';
-        const result = item.Expenses ? '-' : '+';
-
+      {arr.map(({ _id, type, date, money, category, comment, balance }) => {
+        const borderColor = type === '-' ? '#ff6596' : '#24cca7';
         return (
           <ul
-            key={item.id}
-            // className={
-            //   result === '+' ? 'mobile-list mobile-list--plus' : 'mobile-list'
-            // }
+            key={_id}
             className={
-              result === '+' ? styles.mobileListPlus : styles.mobileList
+              type === '+' ? styles.mobileListPlus : styles.mobileList
             }
             style={{ borderColor: borderColor }}
           >
-            <li className="mobileListItem">
-              <span className="mobileListCategory">Date</span>
-              <span className="mobileListData">{item.date}</span>
+            <li className={styles.mobileListItem}>
+              <span className={styles.mobileListCategory}>Date</span>
+              <span className={styles.mobileListData}>{date}</span>
             </li>
-            <li className="mobileListItem">
-              <span className="mobileListCategory">Type</span>
-              <span className="mobileListData">{result}</span>
+            <li className={styles.mobileListItem}>
+              <span className={styles.mobileListCategory}>Type</span>
+              <span className={styles.mobileListData}>{type}</span>
             </li>
-            <li className="mobileListItem">
-              <span className="mobileListCategory">Category</span>
-              <span className="mobileListData">{item.category}</span>
+            <li className={styles.mobileListItem}>
+              <span className={styles.mobileListCategory}>Category</span>
+              <span className={styles.mobileListData}>{category}</span>
             </li>
-            <li className="mobileListItem">
-              <span className="mobileListCategory">Comment</span>
-              <span className="mobileListData">{item.comment}</span>
+            <li className={styles.mobileListItem}>
+              <span className={styles.mobileListCategory}>Comment</span>
+              <span className={styles.mobileListData}>{comment}</span>
             </li>
-            <li className="mobileListItem">
-              <span className="mobileListCategory">Sum</span>
+            <li className={styles.mobileListItem}>
+              <span className={styles.mobileListCategory}>Sum</span>
               <span
-                // className={
-                //   result === '+'
-                //     ? 'mobile-list_data mobile-list_data--plus'
-                //     : 'mobile-list_data mobile-list_data--minus'
-                // }
-
                 className={
-                  result === '+'
+                  type === '+'
                     ? styles.mobileListDataPlus
                     : styles.mobileListDataMinus
                 }
                 style={{ borderColor: borderColor }}
               >
-                {item.sum}
+                {money}
               </span>
             </li>
-            <li className="mobileListItem">
-              <span className="mobileListCategory">Balance</span>
-              <span className="mobileListData">{item.balance}</span>
+            <li className={styles.mobileListItem}>
+              <span className={styles.mobileListCategory}>Balance</span>
+              <span className={styles.mobileListData}>{balance}</span>
             </li>
           </ul>
         );
