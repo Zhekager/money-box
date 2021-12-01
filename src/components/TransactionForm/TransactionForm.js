@@ -69,7 +69,7 @@ export default function TransactionForm({ onClose }) {
   };
 
   const handleSubmitForm = (
-    { type, money, category, date, comment },
+    { type, money, category, date, month, year, comment },
     { resetForm },
   ) => {
     // let currentCategory = {};
@@ -93,6 +93,8 @@ export default function TransactionForm({ onClose }) {
         category,
         money,
         date,
+        month: new Date().getMonth() + 1,
+        year: new Date().getYear(),
         comment,
       }),
     );
