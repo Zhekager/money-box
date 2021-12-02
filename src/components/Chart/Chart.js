@@ -4,7 +4,7 @@ import ChartBalance from './ChartBalance';
 
 import styles from './Chart.module.scss';
 
-export default function Chart() {
+export default function MyChart() {
   return (
     <div className={styles.chart}>
       {/* <p className={styles.title}>Statistics</p> */}{' '}

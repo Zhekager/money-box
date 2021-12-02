@@ -89,7 +89,7 @@ const getStatistics =
     dispatch(getStatisticsRequest());
     try {
       const { data } = await axios.get(
-        `/transactions/statistics?month=${month}&year=${year}`,
+        `api/transactions/statistics?month=${month}&year=${year}`,
       );
       console.log(data.data);
 
