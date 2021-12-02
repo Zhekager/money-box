@@ -1,5 +1,6 @@
 const getIsLoggedIn = state => state.auth.isLoggedIn;
 
+// const getUsernameCurrent = state => state.auth.user.user.name;
 const getUsername = state => state.auth.user.name;
 
 const getUserEmail = state => state.auth.user.email;
@@ -21,6 +22,7 @@ const getTransactionsUser = state => state.auth.user.transactions;
 // const addTransactionsUser = state => state.auth.user.transactions;
 
 const authSelectors = {
+  // getUsernameCurrent,
   getIsLoggedIn,
   getUsername,
   getUserEmail,
