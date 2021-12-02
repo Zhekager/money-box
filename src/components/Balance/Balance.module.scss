@@ -3,13 +3,15 @@
   padding: 8px 40px 13px;
   width: 280px;
   margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
 
   background: #ffffff;
   border-radius: 30px;
 
   @media screen and (min-width: 768px) {
     width: 334px;
-    margin-bottom: 0px;
+    margin: 0px;
   }
 
   @media screen and (min-width: 1280px) {

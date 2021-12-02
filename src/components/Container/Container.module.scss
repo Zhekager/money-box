@@ -8,7 +8,7 @@
   // padding-left: 20px;
   // padding-right: 20px;
   // padding-bottom: 30px;
-  width: $mobile;
+  min-width: $mobile;
   @media screen and (min-width: $tablet) {
     width: $tablet;
     padding-left: 0;
