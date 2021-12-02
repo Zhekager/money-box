@@ -1,17 +1,10 @@
-import { useState, useCallback } from 'react'; //видалив useEffect
+import { useState, useCallback, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Select from 'react-select';
-// import { useDispatch } from 'react-redux';
-//import { getStatistics } from '../../redux/transactions/transaction-operations';
-// import {
-//   month,
-//   year,
-//   tableData,
-// } from '../../assets/data/select-data/selectData';
+import transactionsSelectors from '../../redux/transactions/transaction-selectors';
+import transactionOperations from '../../redux/transactions/transaction-operations';
+import {monthInitial, yearInitial} from '../../assets/data/select-data/selectData';
 import styles from './Table.module.scss';
-import {
-  monthInitial,
-  yearInitial,
-} from '../../assets/data/select-data/selectData';
 
 const colourStyles = {
   placeholder: base => ({
@@ -21,6 +14,7 @@ const colourStyles = {
     lineHeight: '1.5',
     color: '#000000',
   }),
+
   menu: (provided, state) => ({
     ...provided,
     padding: 10,
@@ -51,6 +45,7 @@ const colourStyles = {
       minWidth: '166px',
     },
   }),
+
   option: (provided, state) => ({
     ...provided,
     backgroundColor: 'rgba(255, 255, 255,0.7)',
@@ -64,12 +59,17 @@ const colourStyles = {
   }),
 };
 
-function Table({
-  data: { categoriesSummary, totalSpend, totalIncome, uniqueMonth, uniqueYear },
-}) {
+function Table() {
+  const { categoriesSummary,
+    totalSpend,
+    totalIncome,
+    uniqueMonth,
+    uniqueYear,
+  } = useSelector(transactionsSelectors.getStatistics);
+  
   const backgroundColor = [
     '#FED057',
-    '#FFD8D0',
+    '#FCBEB1',
     '#FD9498',
     '#C5BAFF',
     '#6E78E8',
@@ -78,16 +78,17 @@ function Table({
     '#24CCA7',
     '#00AD84',
   ];
+
   const [filterData, setFilterData] = useState({
     month: '',
     year: '',
   });
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  /*   useEffect(() => {
-    dispatch(getStatistics(filterData));
-  }, [dispatch, filterData]); */
+  useEffect(() => {
+    dispatch(transactionOperations.getStatistics(filterData));
+  }, [dispatch, filterData]);
 
   const handleChange = useCallback(e => {
     const {
@@ -95,14 +96,15 @@ function Table({
     } = e;
     setFilterData(prev => ({ ...prev, [name]: value }));
   }, []);
+
   const onClick = useCallback(e => {
     e.currentTarget.value = '';
     const {
       currentTarget: { name, value },
     } = e;
-
     setFilterData(prev => ({ ...prev, [name]: value }));
   }, []);
+
   return (
     <div className={styles.tableContainer}>
       <div className={styles.selectContainer}>
@@ -143,11 +145,13 @@ function Table({
                 <li className={styles.elementTransaction} key={index}>
                   <div
                     style={
-                      { backgroundColor: backgroundColor[index] }
-                      // width: '24px',
-                      // minHeight: '24px',
-                      // borderRadius: '2px',
-                      // marginRight: '16px',
+                      {
+                        backgroundColor: backgroundColor[index],
+                        width: '24px',
+                        minHeight: '24px',
+                        borderRadius: '2px',
+                        marginRight: '16px',
+                      }
                     }
                   ></div>
                   <div className={styles.category}>{category}</div>

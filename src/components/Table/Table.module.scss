@@ -3,17 +3,21 @@
 li {
   list-style-type: none;
 }
+
 ul {
   margin-left: 0;
   padding-left: 0;
 }
+
 .tableContainer {
   width: 350px;
+
   margin-left: 35px;
   //padding-left: 20px;
   //padding-right: 20px;
   //padding-bottom: 10px;
   // background-color: #dcb5ae;
+
 
   @media (min-width: $mobile) and (max-width: 767px) {
     width: 280px;
@@ -25,6 +29,7 @@ ul {
     margin-left: 30px;
   }
 }
+
 .selectContainer {
   display: flex;
   justify-content: space-between;
@@ -70,8 +75,6 @@ ul {
 .listTitleText {
   padding-left: 20px;
   padding-right: 20px;
-  //font-family: 'Poppins', sans-serif;
-  //font-style: normal;
   font-weight: bold;
   font-size: 18px;
   line-height: 27px;
@@ -118,4 +121,18 @@ ul {
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
+}
+
+.itemTextSpend {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ff6596;
+}
+
+.itemTextIncome {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: #24cca7;
 }

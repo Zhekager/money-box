@@ -6,14 +6,10 @@ import styles from './ChartBalance.module.scss';
 
 export default function ChartBalance() {
   const userBalance = useSelector(authSelectors.getBalance);
-
   return (
     <div>
       <p
-        // className={styles.balance}
-        className={
-          userBalance >= 0 ? styles.balancePositive : styles.balanceNegative
-        }
+        className={styles.balance}
       >
         &#8372; {userBalance}
       </p>
