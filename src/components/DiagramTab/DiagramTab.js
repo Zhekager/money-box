@@ -6,14 +6,13 @@ import Table from '../Table';
 import styles from './DiagramTab.module.scss';
 
 export default function DiagramTab() {
-  const data = useSelector(transactionsSelectors.getStatistics);
-
+  const statistics = useSelector(transactionsSelectors.getStatistics);
   return (
     <section className={styles.SectionStats}>
       <h1 className={styles.StatisticsTitle}>Statistics</h1>
       <div className={styles.ContainerStats}>
-        <MyChart data={data} />
-        <Table data={data} />
+        <MyChart data={statistics} />
+        <Table data={statistics} />
       </div>
     </section>
   );

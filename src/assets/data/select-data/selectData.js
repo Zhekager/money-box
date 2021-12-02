@@ -1,4 +1,4 @@
-const month = [
+const months = [
   { value: '1', label: 'Январь' },
   { value: '2', label: 'Февраль' },
   { value: '3', label: 'Март' },
@@ -13,7 +13,7 @@ const month = [
   { value: '12', label: 'Декабрь' },
 ];
 
-const year = [
+const years = [
   { value: '2020', label: '2020' },
   { value: '2021', label: '2021' },
   { value: '2022', label: '2022' },
@@ -21,7 +21,7 @@ const year = [
 ];
 
 const yearInitial = new Date().getFullYear();
-const currentMonth = month.find(
+const currentMonth = months.find(
   m => Number(m.value) === new Date().getMonth() + 1,
 );
 const monthInitial = currentMonth.label;
@@ -198,8 +198,8 @@ const transactions = [
 ];
 
 export {
-  month,
-  year,
+  months,
+  years,
   yearInitial,
   monthInitial,
   tableData,
