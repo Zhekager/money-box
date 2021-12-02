@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import moment from 'moment';
@@ -10,8 +10,8 @@ import { addMonths } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
 import transactionOperations from '../../redux/transactions/transaction-operations';
 import transactionsSelectors from '../../redux/transactions/transaction-selectors';
-import categorySelectors from '../../redux/categories/categories-selectors';
-import categoriesOperations from '../../redux/categories/categories-operations';
+// import categorySelectors from '../../redux/categories/categories-selectors';
+// import categoriesOperations from '../../redux/categories/categories-operations';
 
 //components
 import ButtonMain from '../ButtonMain';
@@ -21,10 +21,10 @@ import { Calendar } from '../IconBtn/Calendar';
 import Spinner from '../Spinner';
 
 // data
-// import {
-//   categories,
-//   addIncomes,
-// } from '../../assets/data/select-data/selectData';
+import {
+  categories,
+  addIncomes,
+} from '../../assets/data/select-data/selectData';
 
 //styles
 import 'react-datepicker/dist/react-datepicker.css';
@@ -38,11 +38,11 @@ export default function TransactionForm({ onClose }) {
   const [isOpenDate, setIsOpenDate] = useState(false);
   const [type, setType] = useState('-');
 
-  useEffect(() => {
-    dispatch(categoriesOperations.getCategories());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(categoriesOperations.getCategories());
+  // }, [dispatch]);
 
-  const allCategories = useSelector(categorySelectors.getAllCategories);
+  // const allCategories = useSelector(categorySelectors.getAllCategories);
   // console.log('CATEG', allCategories);
 
   const handleChangeType = () => {
@@ -141,7 +141,7 @@ export default function TransactionForm({ onClose }) {
                 value="type"
               />
 
-              {/* {chooseType ? (
+              {chooseType ? (
                 <Box className={styles.categoryBox}>
                   <SelectCategory label="category" name="category">
                     <option className={styles.optionSelect} value="">
@@ -177,9 +177,9 @@ export default function TransactionForm({ onClose }) {
                     ))}
                   </SelectCategory>
                 </Box>
-              )} */}
+              )}
 
-              {chooseType ? (
+              {/* {chooseType ? (
                 <Box className={styles.categoryBox}>
                   <SelectCategory label="category" name="category">
                     <option className={styles.optionSelect} value="">
@@ -215,10 +215,10 @@ export default function TransactionForm({ onClose }) {
                     ))}
                   </SelectCategory>
                 </Box>
-              )}
+              )} */}
 
               <div className={styles.Credentials}>
-                <div className={styles.AmountContainer}>
+                <div className={styles.BoxContainer}>
                   <Field
                     name="money"
                     type="number"
@@ -265,16 +265,20 @@ export default function TransactionForm({ onClose }) {
               </div>
 
               <Box className={styles.box_select}>
-                <Field
-                  name="comment"
-                  as="textarea"
-                  type="text"
-                  placeholder="Comment"
-                  className={styles.Comment}
-                />
-                {errors.comment && touched.comment && (
-                  <div className={styles.inputFeedback}>{errors.comment}</div>
-                )}
+                <div className={styles.BoxContainer}>
+                  <Field
+                    name="comment"
+                    as="textarea"
+                    type="text"
+                    placeholder="Comment"
+                    className={styles.Comment}
+                  />
+                  {errors.comment && touched.comment && (
+                    <div className={styles.inputFeedbackComment}>
+                      {errors.comment}
+                    </div>
+                  )}
+                </div>
               </Box>
 
               <ButtonMain type="submit" contentBtn="Add" button="Button" />
