@@ -39,7 +39,7 @@ const token = createReducer(null, {
   [loginSuccess]: (_, { payload }) => payload.token,
   [logoutSuccess]: () => null,
   // [getUserByGoogleAuthSuccess]: (_, { payload }) => payload.token,
-  [fetchCurrentUserSuccess]: (_, { payload }) => payload.token,
+  // [fetchCurrentUserSuccess]: (_, { payload }) => payload.token,
   // [fetchCurrentUserError]: () => null,
 });
 

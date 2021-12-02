@@ -85,12 +85,12 @@ const logIn = credentials => async dispatch => {
 
     const { data } = await axios.post('/api/users/login', credentials);
 
-    console.log('Token login', data.data.token);
-    console.log('Data login', data.data);
+    // console.log('Token login', data.data.token);
+    // console.log('Data login', data.data);
 
     token.set(data.data.token);
 
-    if (data) {
+    if (data.data) {
       toast.success('Welcome to Wallet!');
     }
 
@@ -156,14 +156,14 @@ const fetchCurrentUser = () => async (dispatch, getState) => {
     return;
   }
 
+  token.set(persistedToken);
+
   dispatch(fetchCurrentUserRequest());
 
   try {
     const { data } = await axios.get('/api/users/current');
 
-    token.set(data.data.token);
-
-    dispatch(fetchCurrentUserSuccess(data.data));
+    dispatch(fetchCurrentUserSuccess(data));
   } catch (error) {
     dispatch(fetchCurrentUserError(error.message));
     // token.unset();
