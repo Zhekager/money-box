@@ -27,6 +27,8 @@
   width: 280px;
   margin-left: auto;
   margin-right: auto;
+  // margin-bottom: 30px;
+  margin-bottom: 0;
 }
 
 .svgNav {
@@ -45,9 +47,10 @@
     display: grid;
     justify-content: start;
     padding: 0;
-    margin-bottom: 30px;
-    margin-left: 0;
-    margin-right: 0;
+    margin: 0;
+    margin-bottom: 15px;
+    // margin-left: 0;
+    // margin-right: 0;
   }
 
   .boxNav {

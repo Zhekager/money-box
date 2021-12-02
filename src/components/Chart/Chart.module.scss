@@ -1,53 +1,29 @@
-@import '../../stylesheet/index.scss';
-
-.title {
-  font-family: $second-font;
-  font-weight: 400;
-  font-size: 30px;
-  line-height: 1.5;
-  //letter-spacing: 0.05em;
-  color: #000000;
-  //margin: 30 20px;
-  margin-bottom: 20px;
-  //width: fit-content;
-}
-
-.doughnut canvas {
-  min-width: 100px;
-  min-height: 100px;
-}
+@import '../../stylesheet';
 
 .chart {
-  max-width: 400px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 280px;
+  // max-width: 320px;
   margin-bottom: 30px;
-}
 
-@media (min-width: $tablet) {
-  .title {
-    margin-top: 40px;
-    margin-bottom: 20px;
-  }
-
-  .chart {
-    margin-right: 35px;
-    margin-left: 40px;
+  @media (min-width: $tablet) {
+    margin: 0;
+    width: 320px;
   }
 }
 
 .containerChart {
-  position: relative;
-  width: 320px;
-  height: 320px;
-  margin: 0;
-}
+  margin-left: auto;
+  margin-right: auto;
+  width: 280px;
+  height: 280px;
 
-@media (min-width: $mobile) and (max-width: 767px) {
-  .title {
-    margin-top: 40px;
-    margin-bottom: 10px;
-  }
-  .containerChart {
-    width: 280px;
-    height: 280px;
+  @media screen and (min-width: 768px) {
+    // width: 320px;
+    // height: 320px;
+    position: relative;
+    margin: 0;
   }
 }

@@ -9,6 +9,7 @@ ul {
 }
 .tableContainer {
   width: 350px;
+  margin-left: 35px;
   //padding-left: 20px;
   //padding-right: 20px;
   //padding-bottom: 10px;
@@ -16,6 +17,12 @@ ul {
 
   @media (min-width: $mobile) and (max-width: 767px) {
     width: 280px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-left: 30px;
   }
 }
 .selectContainer {
@@ -31,16 +38,15 @@ ul {
 
 .select {
   margin-bottom: 20px;
-  font-family: Circe;
-  font-style: normal;
-  font-weight: normal;
+  font-family: 'Circe', sans-serif;
+  font-weight: 400;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1.5;
   outline: none;
 
-  &:nth-child(n) {
-    padding-right: 19px;
-  }
+  // &:nth-child(n) {
+  // padding-right: 19px;
+  // }
 }
 
 .categoryContainer {
@@ -90,7 +96,7 @@ ul {
 }
 
 .category {
-  font-weight: normal;
+  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
 }
@@ -99,7 +105,7 @@ ul {
   margin: 0;
   padding-left: 20px;
   padding-right: 20px;
-  margin-bottom: 40px;
+  padding-bottom: 40px;
 }
 
 .itemTotal {
@@ -109,8 +115,7 @@ ul {
 }
 
 .itemText {
-  font-style: normal;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 16px;
   line-height: 24px;
 }
