@@ -3,7 +3,7 @@
   padding-left: 20px;
   padding-right: 20px;
   background-color: rgba(230, 230, 230, 0.474);
-  min-width: 320px;
+  // min-width: 320px;
   height: 100%;
 }
 
@@ -73,7 +73,7 @@
   }
 
   .wrapper {
-    width: 688px;
+    // width: 688px;
     height: calc(100% - 80px);
     z-index: 2;
     position: relative;
@@ -83,7 +83,7 @@
 @media (min-width: 1280px) {
   .dashboard::before {
     content: '';
-    display: block;
+    // display: block;
     width: 640px;
     height: 486px;
     position: absolute;
@@ -95,7 +95,7 @@
   }
 
   .wrapper {
-    width: 1110px;
+    // width: 1110px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -103,7 +103,7 @@
 
   .dashboardAside {
     position: absolute;
-    left: 390px;
+    left: 380px;
     top: -50px;
     // height: 770px;
     height: 107%;
