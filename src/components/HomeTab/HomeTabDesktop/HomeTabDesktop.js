@@ -10,7 +10,8 @@ const tableHeadData = ['Date', 'Type', 'Category', 'Comment', 'Sum', 'Balance'];
 
 export default function HomeTabDesktop() {
   const dispatch = useDispatch();
-  const arr = useSelector(transactionsSelectors.getTransactions);
+  const array = useSelector(transactionsSelectors.getTransactions);
+  const arr = Array.from(array);
 
   useEffect(() => {
     dispatch(transactionOperations.getTransactions());
@@ -29,7 +30,8 @@ export default function HomeTabDesktop() {
           </tr>
         </thead>
         <tbody className={styles.homeTabBody}>
-          {arr?.map(
+          {arr&&
+            arr?.map(
             ({ _id, type, date, money, category, comment, balance }) => (
               <tr key={_id} className={styles.homeTabBodyRow}>
                 <td className={styles.homeTabBodyData}>{date}</td>
