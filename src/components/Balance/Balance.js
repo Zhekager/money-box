@@ -12,17 +12,16 @@ import styles from './Balance.module.scss';
 const Balance = () => {
   const location = useLocation();
   const userBalance = useSelector(authSelectors.getBalance);
-  // const transactions = useSelector(transactionsSelectors.getTransactions);
-  // const transactionsUser = useSelector(authSelectors.getTransactionsUser);
-  //const transBalance = useSelector(transactionOperations.addTransactions());
-  const arrBalances = useSelector(transactionsSelectors.getTransactionsBalance);
+  const arrTransactions = useSelector(transactionsSelectors.getTransactions);
+  const arr = Array.from(arrTransactions);
+  const arrBalances = arr.map(({ balance }) => balance);
+  const transactionBalance = arrBalances[arrBalances.length - 1];
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(transactionOperations.getTransactions());
   }, [dispatch]);
-
-  const transactionBalance = arrBalances[arrBalances.length - 1];
 
   return (
     <>

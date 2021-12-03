@@ -7,14 +7,6 @@ const getError = state => state.transactions.error;
 const getFilter = state => state.transactions.filter;
 const getStatistics = state => state.transactions.result;
 
-const getTransactionsBalance = createSelector(
-  [getTransactions],
-  transactions => {
-    const transactionsArr = Array.from(transactions);
-    return transactionsArr.map(({ balance }) => balance);
-  },
-);
-
 //export const getYears = state => state.transactions.years;
 //export const getCategoriesTransactions = state => state.transactions.categories;
 //export const totalTransactions = state => getTransactions(state).length;
@@ -30,7 +22,6 @@ const getVisibleTransactions = createSelector(
   },
 );
 const transactionsSelectors = {
-  getTransactionsBalance,
   getTransactions,
   getTransactionsUser,
   getLoading,
