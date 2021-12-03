@@ -93,8 +93,8 @@ export default function TransactionForm({ onClose }) {
         category,
         money,
         date,
-        month: new Date().getMonth() + 1,
-        year: new Date().getYear(),
+        month: date.slice(3, 5),
+        year: date.slice(6),
         comment,
       }),
     );

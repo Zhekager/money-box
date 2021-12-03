@@ -7,7 +7,8 @@ import styles from './HomeTabMobile.module.scss';
 
 export default function HomeTabMobile() {
   const dispatch = useDispatch();
-  const arr = useSelector(transactionsSelectors.getTransactions);
+  const array = useSelector(transactionsSelectors.getTransactions);
+  const arr = Array.from(array);
 
   useEffect(() => {
     dispatch(transactionOperations.getTransactions());
@@ -15,7 +16,8 @@ export default function HomeTabMobile() {
 
   return (
     <>
-      {arr.map(({ _id, type, date, money, category, comment, balance }) => {
+      {arr &&
+        arr.map(({ _id, type, date, money, category, comment, balance }) => {
         const borderColor = type === '-' ? '#ff6596' : '#24cca7';
         return (
           <ul
