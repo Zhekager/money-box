@@ -37,7 +37,7 @@ export default function MyChart() {
           '#00AD84',
         ],
         borderWidth: 1,
-        cutout: 99,
+        cutout: 85,
       },
     ],
   };
