@@ -120,8 +120,8 @@ export default function TransactionForm({ onClose }) {
       <div className={styles.container}>
         <Formik
           initialValues={{
-            // type: !chooseType ? '-' : '+',
-            type: type,
+            type: !chooseType ? '-' : '+',
+            // type: type,
             category: '',
             money: '',
             date: dateMoment,
