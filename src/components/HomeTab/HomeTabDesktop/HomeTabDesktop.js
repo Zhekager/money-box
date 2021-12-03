@@ -37,13 +37,6 @@ export default function HomeTabDesktop() {
                 <td className={styles.homeTabBodyData}>{category}</td>
                 <td className={styles.homeTabBodyData}>{comment}</td>
                 <td
-                  // className={
-                  //   type === '+'
-                  //     ? 'styles.homeTabBody_data homeTabBody_data--plus'
-                  //     : 'styles.homeTabBody_data homeTabBody_data--minus'
-                  // }
-
-                  // type === '+' ? className={styles.homeTabBody_dataPlus} : className={styles.homeTabBody_dataMinus}
                   className={
                     type === '+'
                       ? styles.homeTabBodyDataPlus

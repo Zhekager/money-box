@@ -6,13 +6,15 @@ import styles from './ChartBalance.module.scss';
 
 export default function ChartBalance() {
   const userBalance = useSelector(authSelectors.getBalance);
+  const transactions = useSelector(authSelectors.getTransactionsUser);
+
   return (
-    <div>
-      <p
-        className={styles.balance}
-      >
-        &#8372; {userBalance}
-      </p>
-    </div>
+    <>
+      {transactions.length >= 1 && (
+        <div>
+          <p className={styles.balance}>&#8372; {userBalance}</p>
+        </div>
+      )}
+    </>
   );
 }

@@ -1,9 +1,8 @@
 .currency {
   width: 280px;
-  padding-bottom: 289px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 13px;
+  margin-top: 20px;
 
   .currencyList {
     display: flex;
@@ -72,7 +71,7 @@
     }
 
     .currencyPriceList {
-      padding: 20px 30px 60px 30px;
+      padding: 20px 30px 150px 30px;
     }
 
     .currencyPrice:not(:last-child) {

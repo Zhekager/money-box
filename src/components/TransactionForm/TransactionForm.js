@@ -110,7 +110,7 @@ export default function TransactionForm({ onClose }) {
       .required('Amount is required'),
     date: Yup.string(),
     comment: Yup.string('Enter your comment').max(
-      12,
+      20,
       'No more than 20 characters',
     ),
   });
@@ -120,8 +120,8 @@ export default function TransactionForm({ onClose }) {
       <div className={styles.container}>
         <Formik
           initialValues={{
-            // type: !chooseType ? '-' : '+',
-            type: type,
+            type: !chooseType ? '-' : '+',
+            // type: type,
             category: '',
             money: '',
             date: dateMoment,

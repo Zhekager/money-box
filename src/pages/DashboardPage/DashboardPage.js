@@ -60,7 +60,9 @@ export default function DashboardPage() {
                       {location.pathname === routes.dashboard && <Balance />}
                       {location.pathname === routes.currency && <Currency />}
                       {location.pathname === routes.dashboard && <HomeTab />}
-                      {location.pathname === routes.statistics && <DiagramTab />}
+                      {location.pathname === routes.statistics && (
+                        <DiagramTab />
+                      )}
                     </>
                   )}
 
@@ -69,7 +71,9 @@ export default function DashboardPage() {
                       <Sidebar />
                       <div>
                         {location.pathname === routes.dashboard && <HomeTab />}
-                        {location.pathname === routes.statistics && <DiagramTab />}
+                        {location.pathname === routes.statistics && (
+                          <DiagramTab />
+                        )}
                       </div>
                       <aside className={styles.dashboardAside}></aside>
                     </>
@@ -79,13 +83,15 @@ export default function DashboardPage() {
             }}
           </Media>
 
-          <ButtonIcon
-            onClick={onOpenModal}
-            aria-label="Open modal"
-            btnClass="ButtonIconAdd"
-          >
-            <AddPlus svg={styles.svgAddPlus} />
-          </ButtonIcon>
+          {location.pathname === routes.dashboard && (
+            <ButtonIcon
+              onClick={onOpenModal}
+              aria-label="Open modal"
+              btnClass="ButtonIconAdd"
+            >
+              <AddPlus svg={styles.svgAddPlus} />
+            </ButtonIcon>
+          )}
 
           {showModal && (
             <Modal onClose={toggleModal}>

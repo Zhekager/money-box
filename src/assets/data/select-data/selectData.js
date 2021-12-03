@@ -81,10 +81,10 @@ const categories = [
   },
   {
     _id: '6196e5398a118953cd850786',
-    name: 'Taking Care of children',
-    value: 'Taking Care of children',
-    category: 'Taking Care of children',
-    label: 'Taking Care of children',
+    name: 'Taking care of children',
+    value: 'Taking care of children',
+    category: 'Taking care of children',
+    label: 'Taking care of children',
   },
   {
     _id: '6196e5398a118953cd850787',
@@ -130,13 +130,6 @@ const addIncomes = [
     value: 'Irregular income',
     category: 'Irregular income',
     label: 'Irregular income',
-  },
-  {
-    _id: '6196e5398a118953cd85078d',
-    name: 'Miscellaneous',
-    value: 'Miscellaneous',
-    category: 'Miscellaneous',
-    label: 'Miscellaneous',
   },
 ];
 

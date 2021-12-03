@@ -6,7 +6,8 @@ export default function Currency() {
   const [USD, setUSD] = useState({ buy: '00.00', sale: '00.00' });
   const [EUR, setEUR] = useState({ buy: '00.00', sale: '00.00' });
   const [RUB, setRUB] = useState({ buy: '00.00', sale: '00.00' });
-  const [BTC, setBTC] = useState({ buy: '00.00', sale: '00.00' });
+  // const [CHF, setCHF] = useState({ buy: '00.00', sale: '00.00' });
+  // const [BTC, setBTC] = useState({ buy: '00.00', sale: '00.00' });
 
   useEffect(() => {
     createArrCurrency()
@@ -18,8 +19,10 @@ export default function Currency() {
             setEUR({ buy: buy, sale: sale });
           } else if (ccy === 'RUR') {
             setRUB({ buy: buy, sale: sale });
-          } else if (ccy === 'BTC') {
-            setBTC({ buy: buy, sale: sale });
+            // } else if (ccy === 'CHF') {
+            //   setCHF({ buy: buy, sale: sale });
+            // } else if (ccy === 'BTC') {
+            //   setBTC({ buy: buy, sale: sale });
           }
         });
       })
@@ -50,11 +53,16 @@ export default function Currency() {
           <span>{RUB.buy}</span>
           <span>{RUB.sale}</span>
         </li>
+        {/* <li className={styles.currencyPrice}>
+          <span>CHF</span>
+          <span>{CHF.buy}</span>
+          <span>{CHF.sale}</span>
+        </li>
         <li className={styles.currencyPrice}>
           <span>BTC</span>
           <span>{BTC.buy}</span>
           <span>{BTC.sale}</span>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
