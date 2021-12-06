@@ -15,7 +15,9 @@ export default function ChartBalance() {
     <>
       <div>
         <p className={styles.balance}>
-          &#8372; {balance ? balance : transactionBalance}
+          &#8372;
+          {/* {balance >= 0 ? balance : transactionBalance} */}
+          {balance >= 0 || balance < 0 ? balance : transactionBalance}
         </p>
       </div>
     </>

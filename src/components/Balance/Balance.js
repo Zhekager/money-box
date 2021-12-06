@@ -26,7 +26,8 @@ const Balance = () => {
         <h2 className={styles.title}>balance</h2>
         <p className={styles.text}>
           <span className={styles.currency}>&#8372;</span>
-          {balance ? balance : transactionBalance}
+          {/* {balance ? balance : transactionBalance} */}
+          {balance >= 0 || balance < 0 ? balance : transactionBalance}
         </p>
       </div>
     </>
