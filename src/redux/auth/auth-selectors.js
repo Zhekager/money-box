@@ -20,6 +20,27 @@ const getTransactionBalance = state => state.auth.transactions.balance;
 const getTransactionsAuth = state => state.auth.transactions;
 // const getBalance = state => state.auth.user.balance;
 
+// const formatSum = sum => {
+//   if (!String(sum).includes('.')) {
+//     return sum.toFixed(2);
+//   }
+// };
+
+const getTransactionAuthBalance = state => {
+  const arrTransactionsAuth = getTransactionsAuth(state);
+  const arr = Array.from(arrTransactionsAuth);
+  const arrBalances = arr.map(({ balance }) => balance);
+  const transactionBalance = arrBalances[arrBalances.length - 1];
+  return transactionBalance;
+};
+
+const getArrTransactionAuthBalance = state => {
+  const arrTransactionsAuth = getTransactionsAuth(state);
+  const arr = Array.from(arrTransactionsAuth);
+  const arrBalances = arr.map(({ balance }) => balance);
+  return arrBalances;
+};
+
 const authSelectors = {
   getIsLoggedIn,
   getUsername,
@@ -27,11 +48,12 @@ const authSelectors = {
   getLoading,
   getError,
   getToken,
-  // getBalance,
   getIsRegistered,
   getTransactionsUser,
   getTransactionBalance,
   getTransactionsAuth,
+  getTransactionAuthBalance,
+  getArrTransactionAuthBalance,
   // addTransactionsUser,
   // getCategories,
 };
