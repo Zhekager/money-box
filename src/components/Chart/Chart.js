@@ -1,19 +1,20 @@
 import React from 'react';
-import { useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import transactionsSelectors from '../../redux/transactions/transaction-selectors';
 import { Doughnut } from 'react-chartjs-2';
 import ChartBalance from './ChartBalance';
+import { LoginImgPage } from '../IconBtn/LoginImgPage';
 
 import styles from './Chart.module.scss';
 
 export default function MyChart() {
-  const { categoriesSummary } = useSelector(transactionsSelectors.getStatistics);
+  const { categoriesSummary, totalSpend } = useSelector(
+    transactionsSelectors.getStatistics,
+  );
   const data = {
     datasets: [
       {
-        data: categoriesSummary
-          ? Object.values(categoriesSummary)
-          : null,
+        data: categoriesSummary ? Object.values(categoriesSummary) : null,
         backgroundColor: [
           '#FED057',
           '#F7A594',
@@ -45,13 +46,13 @@ export default function MyChart() {
   return (
     <div className={styles.chart}>
       <div className={styles.containerChart}>
-        <ChartBalance totalSpend/>
+        {totalSpend > 0 ? <ChartBalance totalSpend /> : <LoginImgPage />}
         <div className={styles.doughnut}>
           <Doughnut
             options={{ maintainAspectRatio: false }}
             height={270}
             width={270}
-            data = {data}
+            data={data}
           />
         </div>
       </div>
