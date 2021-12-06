@@ -167,13 +167,13 @@ const fetchCurrentUser = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch(fetchCurrentUserError(error.message));
     // token.unset();
-    // if (error.response.status === 401) {
-    //   return toast.error(
-    //     'Missing authorization! Please try to login or signup.',
-    //   );
-    // }
+    if (error.response.status === 401) {
+      return toast.error(
+        'Missing authorization! Please try to login or signup.',
+      );
+    }
 
-    // return toast.error('Something went wrong! Try again later.');
+    return toast.error('Something went wrong! Try again later.');
   }
 };
 

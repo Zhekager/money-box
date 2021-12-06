@@ -107,6 +107,7 @@ export default function TransactionForm({ onClose }) {
     category: Yup.string('Choose a category').required('Category is required'),
     money: Yup.number('Enter your amount')
       .min(0)
+      .integer()
       .required('Amount is required'),
     date: Yup.string(),
     comment: Yup.string('Enter your comment').max(
@@ -222,7 +223,9 @@ export default function TransactionForm({ onClose }) {
                   <Field
                     name="money"
                     type="number"
-                    placeholder="0.00"
+                    placeholder="0"
+                    // min="0"
+                    // step="1"
                     className={styles.Amount}
                   />
                   {errors.money && touched.money && (
