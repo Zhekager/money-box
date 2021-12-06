@@ -17,6 +17,13 @@ export default function HomeTabDesktop() {
     dispatch(transactionOperations.getTransactions());
   }, [dispatch]);
 
+  const formatSum = sum => {
+    if (!String(sum).includes('.')) {
+      const num = Number(sum);
+      return num.toFixed(2);
+    }
+  };
+
   return (
     <>
       <table className={styles.homeTab}>
@@ -30,27 +37,29 @@ export default function HomeTabDesktop() {
           </tr>
         </thead>
         <tbody className={styles.homeTabBody}>
-          {arr&&
+          {arr &&
             arr?.map(
-            ({ _id, type, date, money, category, comment, balance }) => (
-              <tr key={_id} className={styles.homeTabBodyRow}>
-                <td className={styles.homeTabBodyData}>{date}</td>
-                <td className={styles.homeTabBodyData}>{type}</td>
-                <td className={styles.homeTabBodyData}>{category}</td>
-                <td className={styles.homeTabBodyData}>{comment}</td>
-                <td
-                  className={
-                    type === '+'
-                      ? styles.homeTabBodyDataPlus
-                      : styles.homeTabBodyDataMinus
-                  }
-                >
-                  {money}
-                </td>
-                <td className={styles.homeTabBodyData}>{balance}</td>
-              </tr>
-            ),
-          )}
+              ({ _id, type, date, money, category, comment, balance }) => (
+                <tr key={_id} className={styles.homeTabBodyRow}>
+                  <td className={styles.homeTabBodyData}>{date}</td>
+                  <td className={styles.homeTabBodyData}>{type}</td>
+                  <td className={styles.homeTabBodyData}>{category}</td>
+                  <td className={styles.homeTabBodyData}>{comment}</td>
+                  <td
+                    className={
+                      type === '+'
+                        ? styles.homeTabBodyDataPlus
+                        : styles.homeTabBodyDataMinus
+                    }
+                  >
+                    {formatSum(money)}
+                  </td>
+                  <td className={styles.homeTabBodyData}>
+                    {formatSum(balance)}
+                  </td>
+                </tr>
+              ),
+            )}
         </tbody>
       </table>
     </>

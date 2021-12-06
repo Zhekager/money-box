@@ -1,9 +1,12 @@
-import { useState, useCallback, useEffect} from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Select from 'react-select';
 import transactionsSelectors from '../../redux/transactions/transaction-selectors';
 import transactionOperations from '../../redux/transactions/transaction-operations';
-import {monthInitial, yearInitial} from '../../assets/data/select-data/selectData';
+import {
+  monthInitial,
+  yearInitial,
+} from '../../assets/data/select-data/selectData';
 import styles from './Table.module.scss';
 
 const colourStyles = {
@@ -60,13 +63,14 @@ const colourStyles = {
 };
 
 function Table() {
-  const { categoriesSummary,
+  const {
+    categoriesSummary,
     totalSpend,
     totalIncome,
     uniqueMonth,
     uniqueYear,
   } = useSelector(transactionsSelectors.getStatistics);
-  
+
   const backgroundColor = [
     '#FED057',
     '#FCBEB1',
@@ -104,6 +108,13 @@ function Table() {
     } = e;
     setFilterData(prev => ({ ...prev, [name]: value }));
   }, []);
+
+  const formatSum = sum => {
+    if (!String(sum).includes('.')) {
+      const num = Number(sum);
+      return num.toFixed(2);
+    }
+  };
 
   return (
     <div className={styles.tableContainer}>
@@ -144,19 +155,17 @@ function Table() {
               return (
                 <li className={styles.elementTransaction} key={index}>
                   <div
-                    style={
-                      {
-                        backgroundColor: backgroundColor[index],
-                        width: '24px',
-                        minHeight: '24px',
-                        borderRadius: '2px',
-                        marginRight: '16px',
-                      }
-                    }
+                    style={{
+                      backgroundColor: backgroundColor[index],
+                      width: '24px',
+                      minHeight: '24px',
+                      borderRadius: '2px',
+                      marginRight: '16px',
+                    }}
                   ></div>
                   <div className={styles.category}>{category}</div>
                   <div className={styles.sum}>
-                    {categoriesSummary[category]}
+                    {formatSum(categoriesSummary[category])}
                   </div>
                 </li>
               );
@@ -166,11 +175,13 @@ function Table() {
         <ul className={styles.listTotal}>
           <li className={styles.itemTotal}>
             <div className={styles.itemText}>Expenses:</div>
-            <div className={styles.itemTextSpend}>{totalSpend}</div>
+            <div className={styles.itemTextSpend}>{formatSum(totalSpend)}</div>
           </li>
           <li className={styles.itemTotal}>
             <div className={styles.itemText}>Income:</div>
-            <div className={styles.itemTextIncome}>{totalIncome}</div>
+            <div className={styles.itemTextIncome}>
+              {formatSum(totalIncome)}
+            </div>
           </li>
         </ul>
       </div>
