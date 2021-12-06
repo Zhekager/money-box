@@ -19,6 +19,8 @@ import {
 
 import {
   addTransactionsSuccess,
+  getTransactionsSuccess,
+  // getStatisticsSuccess,
   // editTransactionsSuccess,
   // deleteTransactionsSuccess,
 } from '../transactions/transaction-actions';
@@ -95,11 +97,17 @@ const error = createReducer(null, {
   // [getUserByGoogleAuthError]: (_, { payload }) => payload,
 });
 
-const balance = createReducer(null, {
-  [loginSuccess]: (_, { payload }) => payload.data,
-  [addTransactionsSuccess]: (_, { payload }) => payload.data,
-  // [editTransactionsSuccess]: (_, { payload }) => payload.data,
-  // [deleteTransactionsSuccess]: (_, { payload }) => payload.data,
+// const balance = createReducer(0, {
+//   [loginSuccess]: (_, { payload }) => payload.data,
+//   [addTransactionsSuccess]: (_, { payload }) => payload.data,
+//   [fetchCurrentUserSuccess]: (_, { payload }) => payload,
+
+// });
+
+const transactions = createReducer(null, {
+  [addTransactionsSuccess]: (_, { payload }) => payload,
+  [getTransactionsSuccess]: (_, { payload }) => payload,
+  [fetchCurrentUserSuccess]: (_, { payload }) => payload,
 });
 
 export default combineReducers({
@@ -109,5 +117,6 @@ export default combineReducers({
   isRegistered,
   isLoading,
   error,
-  balance,
+  // balance,
+  transactions,
 });
