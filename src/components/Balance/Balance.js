@@ -6,13 +6,9 @@ import transactionOperations from '../../redux/transactions/transaction-operatio
 import styles from './Balance.module.scss';
 
 const Balance = () => {
-  const balance = useSelector(authSelectors.getTransactionBalanceFormat);
-  const authBalance = useSelector(authSelectors.getTransactionAuthBalance);
+  const balance = useSelector(authSelectors.getTransactionBalance);
+  const lastBalance = useSelector(authSelectors.getTransactionAuthBalance);
   const arrBalances = useSelector(authSelectors.getArrTransactionAuthBalance);
-  // const arrTransactionsAuth = useSelector(authSelectors.getTransactionsAuth);
-  // const arr = Array.from(arrTransactionsAuth);
-  // const arrBalances = arr.map(({ balance }) => balance);
-  // const transactionBalance = arrBalances[arrBalances.length - 1];
 
   const dispatch = useDispatch();
 
@@ -22,7 +18,8 @@ const Balance = () => {
 
   const formatSum = sum => {
     if (!String(sum).includes('.')) {
-      return sum.toFixed(2);
+      const num = Number(sum);
+      return num.toFixed(2);
     }
   };
 
@@ -32,7 +29,8 @@ const Balance = () => {
         <h2 className={styles.title}>balance</h2>
         <p className={styles.text}>
           <span className={styles.currency}>&#8372;</span>
-          {(balance && (balance > 0 || balance)) < 0 ? balance : authBalance}
+          {(balance > 0 || balance < 0) && formatSum(balance)}
+          {(lastBalance >= 0 || lastBalance < 0) && formatSum(lastBalance)}
           {!balance && arrBalances.length === 0 && formatSum(0)}
         </p>
       </div>

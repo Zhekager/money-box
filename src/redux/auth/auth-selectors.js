@@ -18,7 +18,7 @@ const getTransactionsUser = state => state.auth.user.transactions;
 
 const getTransactionBalance = state => state.auth.transactions.balance;
 const getTransactionsAuth = state => state.auth.transactions;
-// const getBalance = state => state.auth.user.balance;
+const getBalance = state => state.auth.user.balance;
 
 const formatSum = sum => {
   if (!String(sum).includes('.')) {
@@ -37,7 +37,7 @@ const getTransactionAuthBalance = state => {
   const arr = Array.from(arrTransactionsAuth);
   const arrBalances = arr.map(({ balance }) => balance);
   const transactionBalance = arrBalances[arrBalances.length - 1];
-  return formatSum(transactionBalance);
+  return transactionBalance;
 };
 
 const getArrTransactionAuthBalance = state => {
@@ -61,6 +61,7 @@ const authSelectors = {
   getTransactionAuthBalance,
   getArrTransactionAuthBalance,
   getTransactionBalanceFormat,
+  getBalance,
   // addTransactionsUser,
   // getCategories,
 };

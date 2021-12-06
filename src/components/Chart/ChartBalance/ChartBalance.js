@@ -6,14 +6,13 @@ import styles from './ChartBalance.module.scss';
 
 export default function ChartBalance() {
   const balance = useSelector(authSelectors.getTransactionBalance);
-  const arrTransactionsAuth = useSelector(authSelectors.getTransactionsAuth);
-  const arr = Array.from(arrTransactionsAuth);
-  const arrBalances = arr.map(({ balance }) => balance);
-  const transactionBalance = arrBalances[arrBalances.length - 1];
+  const lastBalance = useSelector(authSelectors.getTransactionAuthBalance);
+  const arrBalances = useSelector(authSelectors.getArrTransactionAuthBalance);
 
   const formatSum = sum => {
     if (!String(sum).includes('.')) {
-      return sum.toFixed(2);
+      const num = Number(sum);
+      return num.toFixed(2);
     }
   };
 
@@ -22,8 +21,8 @@ export default function ChartBalance() {
       <div>
         <p className={styles.balance}>
           &#8372;
-          {/* {balance >= 0 ? balance : transactionBalance} */}
-          {balance > 0 || balance < 0 ? balance : transactionBalance}
+          {(balance > 0 || balance < 0) && formatSum(balance)}
+          {(lastBalance >= 0 || lastBalance < 0) && formatSum(lastBalance)}
           {!balance && arrBalances.length === 0 && formatSum(0)}
         </p>
       </div>
