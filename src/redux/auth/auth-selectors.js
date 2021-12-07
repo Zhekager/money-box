@@ -1,4 +1,3 @@
-import transitions from '@material-ui/core/styles/transitions';
 import { createSelector } from '@reduxjs/toolkit';
 
 const getIsLoggedIn = state => state.auth.isLoggedIn;

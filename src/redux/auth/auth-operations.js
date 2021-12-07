@@ -177,15 +177,16 @@ const fetchCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-const getUserByGoogleAuth = () => async dispatch => {
+const getUserByGoogleAuth = token => async dispatch => {
   dispatch(getUserByGoogleAuthRequest());
 
   try {
     const {
       data: { data },
-    } = await axios.get('/users/google-user');
+    } = await axios.get('/users/google-user', token);
     dispatch(getUserByGoogleAuthSuccess(data));
 
+    toast.success('Welcome to Wallet!');
     token.set(data.token);
 
     return data;
