@@ -1,3 +1,6 @@
+import transitions from '@material-ui/core/styles/transitions';
+import { createSelector } from '@reduxjs/toolkit';
+
 const getIsLoggedIn = state => state.auth.isLoggedIn;
 
 const getUsername = state => state.auth.user.name;
@@ -26,13 +29,23 @@ const getBalance = state => state.auth.user.balance;
 //   }
 // };
 
-const getTransactionAuthBalance = state => {
-  const arrTransactionsAuth = getTransactionsAuth(state);
-  const arr = Array.from(arrTransactionsAuth);
-  const arrBalances = arr.map(({ balance }) => balance);
-  const transactionBalance = arrBalances[arrBalances.length - 1];
-  return transactionBalance;
-};
+// const getTransactionAuthBalance = state => {
+//   const arrTransactionsAuth = getTransactionsAuth(state);
+//   const arr = Array.from(arrTransactionsAuth);
+//   const arrBalances = arr.map(({ balance }) => balance);
+//   const transactionBalance = arrBalances[arrBalances.length - 1];
+//   return transactionBalance;
+// };
+
+const getTransactionAuthBalance = createSelector(
+  [getTransactionsAuth],
+  transactions => {
+    const arr = Array.from(transactions);
+    const arrBalances = arr.map(({ balance }) => balance);
+    const transactionBalance = arrBalances[arrBalances.length - 1];
+    return transactionBalance;
+  },
+);
 
 const getArrTransactionAuthBalance = state => {
   const arrTransactionsAuth = getTransactionsAuth(state);

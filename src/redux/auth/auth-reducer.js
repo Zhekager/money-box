@@ -20,7 +20,6 @@ import {
 import {
   addTransactionsSuccess,
   getTransactionsSuccess,
-  // getStatisticsSuccess,
   // editTransactionsSuccess,
   // deleteTransactionsSuccess,
 } from '../transactions/transaction-actions';
@@ -104,7 +103,7 @@ const error = createReducer(null, {
 
 // });
 
-const transactions = createReducer(null, {
+const transactions = createReducer([], {
   [addTransactionsSuccess]: (_, { payload }) => payload,
   [getTransactionsSuccess]: (_, { payload }) => payload,
   [fetchCurrentUserSuccess]: (_, { payload }) => payload,
