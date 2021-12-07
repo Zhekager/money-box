@@ -77,6 +77,7 @@ export default function DashboardPage() {
                 ) : (
                   <>
                     <Navigation />
+                    <Balance />
                     <Routes>
                       <Route index element={<HomeTab />} />
                       <Route
