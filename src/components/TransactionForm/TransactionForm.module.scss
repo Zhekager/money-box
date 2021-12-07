@@ -55,7 +55,7 @@
 }
 
 .Amount {
-  padding: 0 0 10px 0;
+  padding: 0 0 10px 5px;
 
   width: 190px;
   height: 34px;
@@ -68,14 +68,14 @@
   outline: none;
   border-bottom: 1px solid #e0e0e0;
   line-height: 1.5;
-}
 
-.Amount::placeholder {
-  font-family: 'Circe', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  text-align: center;
-  color: #bdbdbd;
+  &::placeholder {
+    font-family: 'Circe', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: left;
+    color: #bdbdbd;
+  }
 }
 
 .BoxContainer {
@@ -102,6 +102,7 @@
   height: 44px;
   padding-top: 10px;
   padding-bottom: 10px;
+  padding-left: 5px;
   color: #000000;
   font-family: 'Circe', sans-serif;
   font-size: 18px;
@@ -165,7 +166,7 @@
   .Amount {
     width: 280px;
     height: 34px;
-    text-align: left;
+    text-align: center;
     margin-bottom: 40px;
     &::placeholder {
       text-align: left;
@@ -201,7 +202,7 @@
   width: 280px;
   height: 34px;
   text-align: left;
-  padding: 0 0 10px 0;
+  padding: 0 0 10px 5px;
 
   font-family: 'Circe', sans-serif;
   font-weight: 400;
@@ -216,6 +217,7 @@
   @media screen and (min-width: 768px) {
     width: 190px;
     text-align: center;
+    padding-left: 0;
   }
 }
 

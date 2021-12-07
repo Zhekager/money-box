@@ -6,7 +6,7 @@ import transactionOperations from '../../redux/transactions/transaction-operatio
 import styles from './Balance.module.scss';
 
 const Balance = () => {
-  const balance = useSelector(authSelectors.getTransactionsAuth);
+  const transactions = useSelector(authSelectors.getTransactionsAuth);
   const lastBalance = useSelector(authSelectors.getTransactionAuthBalance);
   const arrBalances = useSelector(authSelectors.getArrTransactionAuthBalance);
 
@@ -29,11 +29,11 @@ const Balance = () => {
         <h2 className={styles.title}>balance</h2>
         <p className={styles.text}>
           <span className={styles.currency}>&#8372;</span>
-          {balance.balance &&
-            (balance.balance > 0 || balance.balance < 0) &&
-            formatSum(balance.balance)}
+          {transactions.balance &&
+            (transactions.balance > 0 || transactions.balance < 0) &&
+            formatSum(transactions.balance)}
           {(lastBalance >= 0 || lastBalance < 0) && formatSum(lastBalance)}
-          {!balance && arrBalances.length === 0 && formatSum(0)}
+          {!transactions.balance && arrBalances.length === 0 && formatSum(0)}
         </p>
       </div>
     </>

@@ -103,16 +103,16 @@ export default function TransactionForm({ onClose }) {
   };
 
   const validationsSchema = Yup.object().shape({
-    type: Yup.string().required('Type is required'),
-    category: Yup.string('Choose a category').required('Category is required'),
-    money: Yup.number('Enter your amount')
-      .min(0)
-      .integer()
-      .required('Amount is required'),
+    type: Yup.string().required('type is required'),
+    category: Yup.string('choose a category').required('category is required'),
+    money: Yup.number('enter your sum')
+      .min(0, 'sum must be positive')
+      .integer('sum must be an integer')
+      .required('sum is required'),
     date: Yup.string(),
-    comment: Yup.string('Enter your comment').max(
+    comment: Yup.string('enter your comment').max(
       20,
-      'No more than 20 characters',
+      'no more than 20 characters',
     ),
   });
 
@@ -223,7 +223,7 @@ export default function TransactionForm({ onClose }) {
                   <Field
                     name="money"
                     type="number"
-                    placeholder="0"
+                    placeholder="Enter your sum"
                     // min="0"
                     // step="1"
                     className={styles.Amount}

@@ -16,20 +16,14 @@ const getIsRegistered = state => state.auth.isRegistered;
 
 const getTransactionsUser = state => state.auth.user.transactions;
 
-// const getTransactionBalance = state => state.auth.transactions.balance;
 const getTransactionsAuth = state => state.auth.transactions;
 const getBalance = state => state.auth.user.balance;
 
-const formatSum = sum => {
-  if (!String(sum).includes('.')) {
-    const num = Number(sum);
-    return num.toFixed(2);
-  }
-};
-
-// const getTransactionBalanceFormat = state => {
-//   const transBal = getTransactionBalance(state);
-//   return formatSum(transBal);
+// const formatSum = sum => {
+//   if (!String(sum).includes('.')) {
+//     const num = Number(sum);
+//     return num.toFixed(2);
+//   }
 // };
 
 const getTransactionAuthBalance = state => {
@@ -56,11 +50,9 @@ const authSelectors = {
   getToken,
   getIsRegistered,
   getTransactionsUser,
-  // getTransactionBalance,
   getTransactionsAuth,
   getTransactionAuthBalance,
   getArrTransactionAuthBalance,
-  // getTransactionBalanceFormat,
   getBalance,
   // addTransactionsUser,
   // getCategories,
