@@ -5,6 +5,7 @@ import {
   Route,
   Routes,
   Navigate,
+  useLocation,
 } from 'react-router-dom';
 // import routes from '../../assets/routes';
 import Header from '../../components/Header';
@@ -27,7 +28,7 @@ export default function DashboardPage() {
   const sizeScreen = useSizeScreen();
   // const location = useLocation();
   // const navigate = useNavigate();
-  // const { pathname } = useLocation();
+  const { pathname } = useLocation();
   const [showModal, setShowModal] = useState(false);
 
   // const goToHomePage = () => navigate('dashboard', { replace: true });
@@ -77,9 +78,17 @@ export default function DashboardPage() {
                 ) : (
                   <>
                     <Navigation />
-                    <Balance />
+
                     <Routes>
-                      <Route index element={<HomeTab />} />
+                      <Route
+                        index
+                        element={
+                          <>
+                            <Balance />
+                            <HomeTab />
+                          </>
+                        }
+                      />
                       <Route
                         path="home"
                         element={
@@ -102,15 +111,15 @@ export default function DashboardPage() {
             </Media>
           </Suspense>
 
-          {/* {location.pathname === routes.dashboard && ( */}
-          <ButtonIcon
-            onClick={onOpenModal}
-            aria-label="Open modal"
-            btnClass="ButtonIconAdd"
-          >
-            <AddPlus svg={styles.svgAddPlus} />
-          </ButtonIcon>
-          {/* )} */}
+          {(pathname === '/dashboard/home' || pathname === '/dashboard') && (
+            <ButtonIcon
+              onClick={onOpenModal}
+              aria-label="Open modal"
+              btnClass="ButtonIconAdd"
+            >
+              <AddPlus svg={styles.svgAddPlus} />
+            </ButtonIcon>
+          )}
 
           {showModal && (
             <Modal onClose={toggleModal}>

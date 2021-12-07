@@ -50,8 +50,8 @@ export default function MyChart() {
         <div className={styles.doughnut}>
           <Doughnut
             options={{ maintainAspectRatio: false }}
-            height={270}
-            width={270}
+            height={280}
+            width={280}
             data={data}
           />
         </div>

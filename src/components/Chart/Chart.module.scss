@@ -21,9 +21,19 @@
   height: 280px;
 
   @media screen and (min-width: 768px) {
-    // width: 320px;
-    // height: 320px;
+    width: 320px;
+    height: 320px;
     position: relative;
     margin: 0;
+  }
+}
+
+.doughnut {
+  width: 280px;
+  height: 280px;
+
+  @media screen and (min-width: 768px) {
+    width: 320px;
+    height: 320px;
   }
 }
