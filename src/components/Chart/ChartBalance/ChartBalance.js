@@ -22,7 +22,7 @@ export default function ChartBalance() {
         <p className={styles.balance}>
           &#8372;
           {transactions.balance &&
-            (transactions.balance > 0 || transactions.balance < 0) &&
+            (transactions.balance >= 0 || transactions.balance < 0) &&
             formatSum(transactions.balance)}
           {(lastBalance >= 0 || lastBalance < 0) && formatSum(lastBalance)}
           {!transactions.balance && arrBalances.length === 0 && formatSum(0)}
