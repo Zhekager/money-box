@@ -16,7 +16,7 @@ const getIsRegistered = state => state.auth.isRegistered;
 
 const getTransactionsUser = state => state.auth.user.transactions;
 
-const getTransactionBalance = state => state.auth.transactions.balance;
+// const getTransactionBalance = state => state.auth.transactions.balance;
 const getTransactionsAuth = state => state.auth.transactions;
 const getBalance = state => state.auth.user.balance;
 
@@ -27,10 +27,10 @@ const formatSum = sum => {
   }
 };
 
-const getTransactionBalanceFormat = state => {
-  const transBal = getTransactionBalance(state);
-  return formatSum(transBal);
-};
+// const getTransactionBalanceFormat = state => {
+//   const transBal = getTransactionBalance(state);
+//   return formatSum(transBal);
+// };
 
 const getTransactionAuthBalance = state => {
   const arrTransactionsAuth = getTransactionsAuth(state);
@@ -56,11 +56,11 @@ const authSelectors = {
   getToken,
   getIsRegistered,
   getTransactionsUser,
-  getTransactionBalance,
+  // getTransactionBalance,
   getTransactionsAuth,
   getTransactionAuthBalance,
   getArrTransactionAuthBalance,
-  getTransactionBalanceFormat,
+  // getTransactionBalanceFormat,
   getBalance,
   // addTransactionsUser,
   // getCategories,
