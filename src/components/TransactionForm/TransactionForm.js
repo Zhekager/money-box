@@ -107,7 +107,7 @@ export default function TransactionForm({ onClose }) {
     category: Yup.string('choose a category').required('category is required'),
     money: Yup.number('enter your sum')
       .min(0, 'sum must be positive')
-      .integer('sum must be an integer')
+      // .integer('sum must be an integer')
       .required('sum is required'),
     date: Yup.string(),
     comment: Yup.string('enter your comment').max(

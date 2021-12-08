@@ -14,11 +14,18 @@ export default function HomeTabMobile() {
     dispatch(transactionOperations.getTransactions());
   }, [dispatch]);
 
+  // const formatSum = sum => {
+  //   if (!String(sum).includes('.')) {
+  //     const num = Number(sum);
+  //     return num.toFixed(2);
+  //   }
+  // };
+
   const formatSum = sum => {
-    if (!String(sum).includes('.')) {
-      const num = Number(sum);
-      return num.toFixed(2);
-    }
+    return new Intl.NumberFormat('ua-UA', {
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 2,
+    }).format(sum);
   };
 
   return (
