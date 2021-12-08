@@ -25,21 +25,21 @@ export default function RegistrationForm() {
   const isLoading = useSelector(authSelectors.getLoading);
 
   const validationsSchema = Yup.object().shape({
-    email: Yup.string()
+    email: Yup.string('enter your email')
       .email('enter a valid email')
-      .required('email is required'),
-    password: Yup.string()
-      .min(6, 'must be at least 6 charaters')
-      .max(12, 'should be of maximum 12 characters')
-      .required('password is required'),
+      .required('is required'),
+    password: Yup.string('enter your password')
+      .min(6, 'at least 6 charaters')
+      .max(12, 'maximum 12 characters')
+      .required('is required'),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password')], 'passwords are not the same')
-      .required('password is required'),
+      .required('is required'),
     name: Yup.string()
       .typeError()
-      .min(1, 'must be at least 1 charater')
-      .max(12, 'must be at least 12 charaters')
-      .required('name is required'),
+      .min(1, 'at least 1 charater')
+      .max(12, 'maximum 12 characters')
+      .required('is required'),
   });
 
   const handleSubmit = ({ email, password, name }) => {

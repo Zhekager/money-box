@@ -20,11 +20,11 @@ export default function LoginForm() {
   const validationsSchema = Yup.object().shape({
     email: Yup.string('enter your email')
       .email('enter a valid email')
-      .required('email is required'),
+      .required('is required'),
     password: Yup.string('enter your password')
-      .min(6, 'must be at least 6 charaters')
-      .max(12, 'should be of maximum 12 characters')
-      .required('password is required'),
+      .min(6, 'at least 6 charaters')
+      .max(12, 'maximum 12 characters')
+      .required('is required'),
   });
 
   const handleSubmit = ({ email, password }) => {
