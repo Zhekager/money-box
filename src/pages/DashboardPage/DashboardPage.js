@@ -22,6 +22,7 @@ import Navigation from '../../components/Navigation';
 import Balance from '../../components/Balance';
 import DiagramTab from '../../components/DiagramTab';
 import { AddPlus } from '../../components/IconBtn/AddPlus';
+import Layout from '../../components/Layout';
 
 import styles from './DashboardPage.module.scss';
 
@@ -45,99 +46,101 @@ export default function DashboardPage() {
   return (
     <>
       <Header />
-      <div className={styles.dashboard}>
-        <div className={styles.wrapper}>
-          <Suspense fallback={null}>
-            <Media
-              queries={{
-                mobileSize: '(max-width: 767px)',
-                otherSize: '(min-width: 768px)',
-              }}
-            >
-              {matches =>
-                matches.otherSize ? (
-                  <>
-                    <Sidebar />
-                    <div>
+      <Layout>
+        <div className={styles.dashboard}>
+          <div className={styles.wrapper}>
+            <Suspense fallback={null}>
+              <Media
+                queries={{
+                  mobileSize: '(max-width: 767px)',
+                  otherSize: '(min-width: 768px)',
+                }}
+              >
+                {matches =>
+                  matches.otherSize ? (
+                    <>
+                      <Sidebar />
+                      <div>
+                        <Routes>
+                          <Route index element={<HomeTab />} />
+                          <Route path="home" element={<HomeTab />} />
+                          <Route path="statistics" element={<DiagramTab />} />
+                          <Route
+                            path="currency"
+                            element={<Navigate to="/dashboard/home" />}
+                          />
+                          <Route
+                            path="*"
+                            element={<Navigate to="/dashboard/home" />}
+                          />
+                        </Routes>
+                      </div>
+                      <aside className={styles.dashboardAside}></aside>
+                    </>
+                  ) : (
+                    <>
+                      <Navigation />
+
                       <Routes>
-                        <Route index element={<HomeTab />} />
-                        <Route path="home" element={<HomeTab />} />
-                        <Route path="statistics" element={<DiagramTab />} />
                         <Route
-                          path="currency"
-                          element={<Navigate to="/dashboard/home" />}
+                          index
+                          element={
+                            <>
+                              <Balance />
+                              <HomeTab />
+                            </>
+                          }
                         />
+                        <Route
+                          path="home"
+                          element={
+                            <>
+                              <Balance />
+                              <HomeTab />
+                            </>
+                          }
+                        />
+                        <Route path="statistics" element={<DiagramTab />} />
+                        <Route path="currency" element={<Currency />} />
                         <Route
                           path="*"
                           element={<Navigate to="/dashboard/home" />}
                         />
                       </Routes>
-                    </div>
-                    <aside className={styles.dashboardAside}></aside>
-                  </>
-                ) : (
-                  <>
-                    <Navigation />
+                    </>
+                  )
+                }
+              </Media>
+            </Suspense>
 
-                    <Routes>
-                      <Route
-                        index
-                        element={
-                          <>
-                            <Balance />
-                            <HomeTab />
-                          </>
-                        }
-                      />
-                      <Route
-                        path="home"
-                        element={
-                          <>
-                            <Balance />
-                            <HomeTab />
-                          </>
-                        }
-                      />
-                      <Route path="statistics" element={<DiagramTab />} />
-                      <Route path="currency" element={<Currency />} />
-                      <Route
-                        path="*"
-                        element={<Navigate to="/dashboard/home" />}
-                      />
-                    </Routes>
-                  </>
-                )
-              }
-            </Media>
-          </Suspense>
+            {(pathname === '/dashboard/home' || pathname === '/dashboard') && (
+              <ButtonIcon
+                onClick={onOpenModal}
+                aria-label="Open modal"
+                btnClass="ButtonIconAdd"
+              >
+                <AddPlus svg={styles.svgAddPlus} />
+              </ButtonIcon>
+            )}
 
-          {(pathname === '/dashboard/home' || pathname === '/dashboard') && (
-            <ButtonIcon
-              onClick={onOpenModal}
-              aria-label="Open modal"
-              btnClass="ButtonIconAdd"
-            >
-              <AddPlus svg={styles.svgAddPlus} />
-            </ButtonIcon>
-          )}
+            {showModal && (
+              <Modal onClose={toggleModal}>
+                <TransactionForm onClose={toggleModal} />
 
-          {showModal && (
-            <Modal onClose={toggleModal}>
-              <TransactionForm onClose={toggleModal} />
-
-              {sizeScreen > 767 && (
-                <ButtonIcon
-                  btnClass="ButtonIconClose"
-                  onClick={toggleModal}
-                  aria-label="Close modal"
-                >
-                  <HiX />
-                </ButtonIcon>
-              )}
-            </Modal>
-          )}
+                {sizeScreen > 767 && (
+                  <ButtonIcon
+                    btnClass="ButtonIconClose"
+                    onClick={toggleModal}
+                    aria-label="Close modal"
+                  >
+                    <HiX />
+                  </ButtonIcon>
+                )}
+              </Modal>
+            )}
+          </div>
         </div>
-      </div>
+      </Layout>
     </>
   );
 }

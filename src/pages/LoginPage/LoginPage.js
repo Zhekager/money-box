@@ -15,22 +15,24 @@ export default function LoginPage() {
   const sizeScreen = useSizeScreen();
 
   return (
-    <BgPageContainer bgContainer="BgPageContainer">
-      <ImgContentContainer>
-        {sizeScreen >= 768 && sizeScreen < 1280 && (
-          <LoginImgPage svg={styles.svgLoginImg} />
-        )}
-        {sizeScreen >= 1280 && <LoginImgPage svg={styles.svgLoginImg} />}
-      </ImgContentContainer>
+    <div className={styles.AuthPage}>
+      <BgPageContainer bgContainer="BgPageContainer">
+        <ImgContentContainer>
+          {sizeScreen >= 768 && sizeScreen < 1280 && (
+            <LoginImgPage svg={styles.svgLoginImg} />
+          )}
+          {sizeScreen >= 1280 && <LoginImgPage svg={styles.svgLoginImg} />}
+        </ImgContentContainer>
 
-      <AuthContentContainer authContainer="LoginContainer">
-        <AuthContentContainer authContainer="LoginFormContainer">
-          <AuthHeading text="Wallet" />
-          <LoginForm />
-          <GoogleAuth />
-          <AuthNav content="Sign up" path={routes.signup} />
+        <AuthContentContainer authContainer="LoginContainer">
+          <AuthContentContainer authContainer="LoginFormContainer">
+            <AuthHeading text="Wallet" />
+            <LoginForm />
+            <GoogleAuth />
+            <AuthNav content="Sign up" path={routes.signup} />
+          </AuthContentContainer>
         </AuthContentContainer>
-      </AuthContentContainer>
-    </BgPageContainer>
+      </BgPageContainer>
+    </div>
   );
 }

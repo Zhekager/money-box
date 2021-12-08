@@ -37,7 +37,7 @@ const getTransactions = () => async dispatch => {
     // setToken(token);
     const { data } = await axios.get('/api/transactions');
 
-    console.log('Fetch data', data.data.result);
+    // console.log('Fetch data', data.data.result);
 
     dispatch(getTransactionsSuccess(data.data.result));
   } catch (error) {
@@ -56,10 +56,10 @@ const addTransactions = transaction => async dispatch => {
 
   dispatch(addTransactionsRequest());
   try {
-    console.log('ADDDDD', transaction);
+    // console.log('ADDDDD', transaction);
     const { data } = await axios.post('/api/transactions', transaction);
 
-    console.log('Add data', data.data.result);
+    // console.log('Add data', data.data.result);
 
     dispatch(addTransactionsSuccess(data.data.result));
   } catch (error) {
@@ -75,7 +75,7 @@ const filterTransaction = (month, year) => async dispatch => {
       `/api/transactions/stats?month=${month}&year=${year}`,
     );
 
-    console.log('Filter data', data.data);
+    // console.log('Filter data', data.data);
 
     dispatch(filterTransSuccess(data.data));
   } catch (error) {
@@ -91,7 +91,7 @@ const getStatistics =
       const { data } = await axios.get(
         `api/transactions/statistics?month=${month}&year=${year}`,
       );
-      console.log(data.data);
+      // console.log(data.data);
 
       dispatch(getStatisticsSuccess(data.data));
     } catch (error) {

@@ -15,22 +15,24 @@ export default function RegistrationPage() {
   const sizeScreen = useSizeScreen();
 
   return (
-    <BgPageContainer bgContainer="BgSignupPageContainer">
-      <ImgContentContainer>
-        {sizeScreen >= 768 && sizeScreen < 1280 && (
-          <SignupImgPage svg={styles.svgSignup} />
-        )}
-        {sizeScreen >= 1280 && <SignupImgPage svg={styles.svgSignup} />}
-      </ImgContentContainer>
+    <div className={styles.AuthPage}>
+      <BgPageContainer bgContainer="BgSignupPageContainer">
+        <ImgContentContainer>
+          {sizeScreen >= 768 && sizeScreen < 1280 && (
+            <SignupImgPage svg={styles.svgSignup} />
+          )}
+          {sizeScreen >= 1280 && <SignupImgPage svg={styles.svgSignup} />}
+        </ImgContentContainer>
 
-      <AuthContentContainer authContainer="SignupContainer">
-        <AuthContentContainer authContainer="SignupFormContainer">
-          <AuthHeading text="Wallet" />
-          <RegistrationForm />
-          <GoogleAuth />
-          <AuthNav content="Log in" path={routes.login} />
+        <AuthContentContainer authContainer="SignupContainer">
+          <AuthContentContainer authContainer="SignupFormContainer">
+            <AuthHeading text="Wallet" />
+            <RegistrationForm />
+            <GoogleAuth />
+            <AuthNav content="Log in" path={routes.login} />
+          </AuthContentContainer>
         </AuthContentContainer>
-      </AuthContentContainer>
-    </BgPageContainer>
+      </BgPageContainer>
+    </div>
   );
 }

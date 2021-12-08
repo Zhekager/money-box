@@ -22,26 +22,28 @@ export default function Header() {
   };
 
   return (
-    <header className={styles.Header}>
-      <div className={styles.HeaderContainer}>
-        <AuthHeading text="Wallet" />
-        <UserMenu onClick={onOpenModal} />
+    <div className={styles.sectionHeader}>
+      <header className={styles.Header}>
+        <div className={styles.HeaderContainer}>
+          <AuthHeading text="Wallet" />
+          <UserMenu onClick={onOpenModal} />
 
-        {showModal && (
-          <Modal onClose={toggleModal}>
-            <LogoutForm onClose={toggleModal} />
-            {sizeScreen > 767 && (
-              <ButtonIcon
-                btnClass="ButtonIconClose"
-                onClick={toggleModal}
-                aria-label="Close modal"
-              >
-                <HiX />
-              </ButtonIcon>
-            )}
-          </Modal>
-        )}
-      </div>
-    </header>
+          {showModal && (
+            <Modal onClose={toggleModal}>
+              <LogoutForm onClose={toggleModal} />
+              {sizeScreen > 767 && (
+                <ButtonIcon
+                  btnClass="ButtonIconClose"
+                  onClick={toggleModal}
+                  aria-label="Close modal"
+                >
+                  <HiX />
+                </ButtonIcon>
+              )}
+            </Modal>
+          )}
+        </div>
+      </header>
+    </div>
   );
 }

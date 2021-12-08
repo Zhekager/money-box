@@ -5,7 +5,7 @@ import styles from './AuthNav.module.scss';
 
 const AuthNav = ({ content, path }) => (
   <div className={styles.AuthNav}>
-    <Link to={path} exact className={styles.link}>
+    <Link to={path} className={styles.link}>
       {content}
     </Link>
   </div>

@@ -5,7 +5,7 @@ import authSelectors from './redux/auth/auth-selectors';
 import authOperations from './redux/auth/auth-operations';
 import PrivateRoute from './routesHoc/PrivateRoute';
 import PublicRoute from './routesHoc/PublicRoute';
-import Container from './components/Container';
+// import Layout from './components/Layout';
 // import GoogleAuth from './components/AuthForms/GoogleAuth';
 import Spinner from './components/Spinner';
 import { ToastContainer } from 'react-toastify';
@@ -40,7 +40,8 @@ function App() {
 
   return (
     !isLoading && (
-      <Container>
+      <>
+        {/* <Layout> */}
         <Suspense fallback={<Spinner />}>
           <Routes>
             <Route
@@ -91,7 +92,8 @@ function App() {
           </Routes>
         </Suspense>
         <ToastContainer autoClose={3000} position="top-center" />
-      </Container>
+        {/* </Layout> */}
+      </>
     )
   );
 }
