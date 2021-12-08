@@ -23,3 +23,22 @@
     margin-bottom: 34px;
   }
 }
+
+.containerField {
+  position: relative;
+}
+
+.fieldError {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  color: #ff6596;
+
+  @media screen and (min-width: 768px) {
+    top: 14px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    top: 9px;
+  }
+}
