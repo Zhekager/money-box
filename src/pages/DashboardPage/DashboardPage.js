@@ -7,6 +7,7 @@ import {
   Navigate,
   useLocation,
 } from 'react-router-dom';
+
 // import routes from '../../assets/routes';
 import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
@@ -30,7 +31,6 @@ export default function DashboardPage() {
   // const navigate = useNavigate();
   const { pathname } = useLocation();
   const [showModal, setShowModal] = useState(false);
-
   // const goToHomePage = () => navigate('dashboard', { replace: true });
   // const goBack = () => navigate(-1);
 

@@ -16,13 +16,6 @@ const Balance = () => {
     dispatch(transactionOperations.getTransactions());
   }, [dispatch]);
 
-  // const formatSum = sum => {
-  //   if (!String(sum).includes('.')) {
-  //     // const num = Number(sum);
-  //     return sum.toFixed(2);
-  //   }
-  // };
-
   const formatSum = sum => {
     return new Intl.NumberFormat('ua-UA', {
       maximumFractionDigits: 2,
