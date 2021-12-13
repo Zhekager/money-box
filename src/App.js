@@ -53,7 +53,7 @@ function App() {
               }
             />
             <Route
-              path="/signup"
+              path="signup"
               element={
                 <PublicRoute restricted>
                   <RegistrationPage />
@@ -62,7 +62,7 @@ function App() {
             />
 
             <Route
-              path="/login"
+              path="login"
               element={
                 <PublicRoute restricted>
                   <LoginPage />
@@ -71,7 +71,7 @@ function App() {
             />
 
             <Route
-              path="/dashboard/*"
+              path="dashboard/*"
               element={
                 <PrivateRoute>
                   <DashboardPage />
@@ -83,7 +83,7 @@ function App() {
               path="*"
               element={
                 <PrivateRoute>
-                  <Navigate to="/dashboard/home" />
+                  <Navigate to="dashboard/home" />
                 </PrivateRoute>
               }
             />

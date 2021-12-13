@@ -20,7 +20,7 @@ export default function ChartBalance() {
     <>
       <div>
         <p className={styles.balance}>
-          &#8372;
+          &#8372;{' '}
           {transactions.balance &&
             (transactions.balance >= 0 || transactions.balance < 0) &&
             formatSum(transactions.balance)}

@@ -62,7 +62,7 @@ export default function DashboardPage() {
                       <Sidebar />
                       <div>
                         <Routes>
-                          <Route index element={<HomeTab />} />
+                          {/* <Route index element={<HomeTab />} /> */}
                           <Route path="home" element={<HomeTab />} />
                           <Route path="statistics" element={<DiagramTab />} />
                           <Route
@@ -82,7 +82,7 @@ export default function DashboardPage() {
                       <Navigation />
 
                       <Routes>
-                        <Route
+                        {/* <Route
                           index
                           element={
                             <>
@@ -90,7 +90,7 @@ export default function DashboardPage() {
                               <HomeTab />
                             </>
                           }
-                        />
+                        /> */}
                         <Route
                           path="home"
                           element={
