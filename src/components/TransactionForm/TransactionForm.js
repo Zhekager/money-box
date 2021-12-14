@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import moment from 'moment';
@@ -10,8 +10,8 @@ import { addMonths } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
 import transactionOperations from '../../redux/transactions/transaction-operations';
 import transactionsSelectors from '../../redux/transactions/transaction-selectors';
-// import categorySelectors from '../../redux/categories/categories-selectors';
-// import categoriesOperations from '../../redux/categories/categories-operations';
+import categorySelectors from '../../redux/categories/categories-selectors';
+import categoriesOperations from '../../redux/categories/categories-operations';
 
 //components
 import ButtonMain from '../ButtonMain';
@@ -38,12 +38,24 @@ export default function TransactionForm({ onClose }) {
   const [isOpenDate, setIsOpenDate] = useState(false);
   const [type, setType] = useState('-');
 
-  // useEffect(() => {
-  //   dispatch(categoriesOperations.getCategories());
-  // }, [dispatch]);
+  console.log(type);
 
-  // const allCategories = useSelector(categorySelectors.getAllCategories);
+  useEffect(() => {
+    dispatch(categoriesOperations.getCategories());
+  }, [dispatch]);
+
+  const allCategories = useSelector(categorySelectors.getAllCategories);
   // console.log('CATEG', allCategories);
+
+  const allCategoriesCosts = allCategories.filter(
+    category =>
+      category !== 'Regular income' && category !== 'Irregular income',
+  );
+
+  const allCategoriesIncomes = allCategories.filter(
+    category =>
+      category === 'Regular income' || category === 'Irregular income',
+  );
 
   const handleChangeType = () => {
     setChooseType(!chooseType);
@@ -142,7 +154,7 @@ export default function TransactionForm({ onClose }) {
                 value="type"
               />
 
-              {chooseType ? (
+              {/* {chooseType ? (
                 <Box className={styles.categoryBox}>
                   <SelectCategory label="category" name="category">
                     <option className={styles.optionSelect} value="">
@@ -178,16 +190,16 @@ export default function TransactionForm({ onClose }) {
                     ))}
                   </SelectCategory>
                 </Box>
-              )}
+              )} */}
 
-              {/* {chooseType ? (
+              {chooseType ? (
                 <Box className={styles.categoryBox}>
                   <SelectCategory label="category" name="category">
                     <option className={styles.optionSelect} value="">
                       Choose category
                     </option>
 
-                    {allCategories.map((category, i) => (
+                    {allCategoriesIncomes.map((category, i) => (
                       <option
                         className={styles.optionChoose}
                         key={i}
@@ -205,7 +217,7 @@ export default function TransactionForm({ onClose }) {
                       Choose category
                     </option>
 
-                    {allCategories.map((category, i) => (
+                    {allCategoriesCosts.map((category, i) => (
                       <option
                         className={styles.optionChoose}
                         key={i}
@@ -216,7 +228,7 @@ export default function TransactionForm({ onClose }) {
                     ))}
                   </SelectCategory>
                 </Box>
-              )} */}
+              )}
 
               <div className={styles.Credentials}>
                 <div className={styles.BoxContainer}>
