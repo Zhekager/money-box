@@ -21,10 +21,10 @@ import { Calendar } from '../IconBtn/Calendar';
 import Spinner from '../Spinner';
 
 // data
-import {
-  categories,
-  addIncomes,
-} from '../../assets/data/select-data/selectData';
+// import {
+//   categories,
+//   addIncomes,
+// } from '../../assets/data/select-data/selectData';
 
 //styles
 import 'react-datepicker/dist/react-datepicker.css';
@@ -195,10 +195,11 @@ export default function TransactionForm({ onClose }) {
               {chooseType ? (
                 <Box className={styles.categoryBox}>
                   <SelectCategory label="category" name="category">
-                    <option className={styles.optionSelect} value="">
-                      Choose category
-                    </option>
-
+                    <option
+                      className={styles.optionSelect}
+                      value=""
+                      label="Choose category"
+                    />
                     {allCategoriesIncomes.map((category, i) => (
                       <option
                         className={styles.optionChoose}
@@ -213,9 +214,11 @@ export default function TransactionForm({ onClose }) {
               ) : (
                 <Box className={styles.categoryBox}>
                   <SelectCategory label="category" name="category">
-                    <option className={styles.optionSelect} value="">
-                      Choose category
-                    </option>
+                    <option
+                      className={styles.optionSelect}
+                      value=""
+                      label="Choose category"
+                    />
 
                     {allCategoriesCosts.map((category, i) => (
                       <option

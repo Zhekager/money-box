@@ -242,8 +242,8 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
-  // color: #bdbdbd;
-  color: #000000;
+  color: #bdbdbd;
+  // color: #000000;
 }
 
 .optionChoose {
@@ -261,4 +261,8 @@
   top: 100%;
   left: 0;
   right: 0;
+}
+
+.optionChoose[select] {
+  color: #000000;
 }
