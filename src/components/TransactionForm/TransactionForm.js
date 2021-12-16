@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import Select from 'react-select';
+// import { Form as FormSelect, Select } from 'react-formik-ui';
 import moment from 'moment';
 import Box from '@material-ui/core/Box';
 import DatePicker from 'react-datepicker';
@@ -29,6 +31,7 @@ import Spinner from '../Spinner';
 //styles
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from './TransactionForm.module.scss';
+import customStyles from './CustomStyles/customStyles';
 
 export default function TransactionForm({ onClose }) {
   const dispatch = useDispatch();
@@ -37,8 +40,7 @@ export default function TransactionForm({ onClose }) {
   const [startDate, setStartDate] = useState(new Date());
   const [isOpenDate, setIsOpenDate] = useState(false);
   const [type, setType] = useState('-');
-
-  console.log(type);
+  const [category, setCategory] = useState({ value: null, label: '' });
 
   useEffect(() => {
     dispatch(categoriesOperations.getCategories());
@@ -57,10 +59,24 @@ export default function TransactionForm({ onClose }) {
       category === 'Regular income' || category === 'Irregular income',
   );
 
+  const allCategoriesOptions = arr => {
+    let options = [];
+    arr.forEach(name => options.push({ value: name, label: name }));
+    return options;
+  };
+
   const handleChangeType = () => {
     setChooseType(!chooseType);
-    setType('+');
+    // setType('+');
+
+    if (!chooseType) {
+      setType('+');
+    } else {
+      setType('-');
+    }
   };
+
+  console.log(type);
 
   const handleChangeDate = e => {
     setIsOpenDate(!isOpenDate);
@@ -110,13 +126,14 @@ export default function TransactionForm({ onClose }) {
         comment,
       }),
     );
+
     resetForm();
     onClose();
   };
 
   const validationsSchema = Yup.object().shape({
     type: Yup.string().required('type is required'),
-    category: Yup.string('choose a category').required('category is required'),
+    category: Yup.string().required('choose a category'),
     money: Yup.number('enter your sum')
       .min(0, 'sum must be positive')
       // .integer('sum must be an integer')
@@ -134,8 +151,7 @@ export default function TransactionForm({ onClose }) {
         <Formik
           initialValues={{
             type: !chooseType ? '-' : '+',
-            // type: type,
-            category: '',
+            category: category.value,
             money: '',
             date: dateMoment,
             comment: '',
@@ -192,7 +208,7 @@ export default function TransactionForm({ onClose }) {
                 </Box>
               )} */}
 
-              {chooseType ? (
+              {/* {chooseType ? (
                 <Box className={styles.categoryBox}>
                   <SelectCategory label="category" name="category">
                     <option
@@ -231,16 +247,50 @@ export default function TransactionForm({ onClose }) {
                     ))}
                   </SelectCategory>
                 </Box>
-              )}
+              )} */}
+
+              <Form className={styles.categoryBox}>
+                {chooseType && (
+                  <div className={styles.containerInput}>
+                    <Select
+                      name="category"
+                      onChange={setCategory}
+                      label=""
+                      placeholder="Choose category income"
+                      options={allCategoriesOptions(allCategoriesIncomes)}
+                      styles={customStyles}
+                    />
+                    {errors.category && touched.category && (
+                      <div className={styles.error}>
+                        category income required
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {!chooseType && (
+                  <div className={styles.containerInput}>
+                    <Select
+                      name="category"
+                      onChange={setCategory}
+                      label=""
+                      placeholder="Choose category cost"
+                      options={allCategoriesOptions(allCategoriesCosts)}
+                      styles={customStyles}
+                    />
+                    {errors.category && touched.category && (
+                      <div className={styles.error}>category cost required</div>
+                    )}
+                  </div>
+                )}
+              </Form>
 
               <div className={styles.Credentials}>
                 <div className={styles.BoxContainer}>
                   <Field
                     name="money"
                     type="number"
-                    placeholder="Enter your sum"
-                    // min="0"
-                    // step="1"
+                    placeholder="0,00"
                     className={styles.Amount}
                   />
                   {errors.money && touched.money && (
@@ -283,10 +333,10 @@ export default function TransactionForm({ onClose }) {
               </div>
 
               <Box className={styles.box_select}>
-                <div className={styles.BoxContainer}>
+                <div className={styles.BoxContainerComment}>
                   <Field
                     name="comment"
-                    as="textarea"
+                    // as="textarea"
                     type="text"
                     placeholder="Comment"
                     className={styles.Comment}
