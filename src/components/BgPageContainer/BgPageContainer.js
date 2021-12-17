@@ -2,8 +2,12 @@ import PropTypes from 'prop-types';
 
 import styles from './BgPageContainer.module.scss';
 
-const BgPageContainer = ({ children, bgContainer }) => {
-  return <div className={styles[`${bgContainer}`]}>{children}</div>;
+const BgPageContainer = ({ children }) => {
+  return (
+    <section className={styles.AuthPage}>
+      <div className={styles.container}>{children}</div>
+    </section>
+  );
 };
 
 BgPageContainer.propTypes = {

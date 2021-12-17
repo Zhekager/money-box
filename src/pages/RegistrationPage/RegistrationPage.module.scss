@@ -1,17 +1,17 @@
-.AuthPage {
-  @media screen and (min-width: 768px) {
-    background-color: #e7eaf2;
-    // background-color: rgba(230, 230, 230, 0.474);
-    background-image: url('../../assets/images/ellipse-violet.png'),
-      url('../../assets/images/ellipse-pink.png');
-    background-repeat: no-repeat, no-repeat;
-    background-position: left bottom, right top;
-  }
+// .AuthPage {
+//   @media screen and (min-width: 768px) {
+//     background-color: #e7eaf2;
+//     // background-color: rgba(230, 230, 230, 0.474);
+//     background-image: url('../../assets/images/ellipse-violet.png'),
+//       url('../../assets/images/ellipse-pink.png');
+//     background-repeat: no-repeat, no-repeat;
+//     background-position: left bottom, right top;
+//   }
 
-  @media screen and (min-width: 1280px) {
-    position: relative;
-  }
-}
+//   @media screen and (min-width: 1280px) {
+//     position: relative;
+//   }
+// }
 
 .svgSignup {
   display: none;
