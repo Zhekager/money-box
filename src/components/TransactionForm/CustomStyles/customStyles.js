@@ -1,5 +1,3 @@
-import { Hidden } from '@material-ui/core';
-
 const customStyles = {
   option: (provided, state) => ({
     ...provided,
@@ -83,12 +81,12 @@ const customStyles = {
     borderBottom: '1px solid #E0E0E0',
     cursor: 'pointer',
 
-    '&:hover': {
-      borderColor: '#24CCA7',
-    },
-    '&:focus': {
-      borderColor: '#24CCA7',
-    },
+    // '&:hover': {
+    //   borderColor: '#24CCA7',
+    // },
+    // '&:focus': {
+    //   borderColor: '#24CCA7',
+    // },
   }),
 };
 

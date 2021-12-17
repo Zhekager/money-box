@@ -21,6 +21,7 @@ import Switch from './Switch';
 import SelectCategory from './SelectCategory';
 import { Calendar } from '../IconBtn/Calendar';
 import Spinner from '../Spinner';
+import { ArrowDown } from '../IconBtn/ArrowDown';
 
 // data
 // import {
@@ -260,6 +261,7 @@ export default function TransactionForm({ onClose }) {
                       options={allCategoriesOptions(allCategoriesIncomes)}
                       styles={customStyles}
                     />
+                    <ArrowDown svg={styles.svgArrowDown} />
                     {errors.category && touched.category && (
                       <div className={styles.error}>
                         category income required
@@ -278,6 +280,7 @@ export default function TransactionForm({ onClose }) {
                       options={allCategoriesOptions(allCategoriesCosts)}
                       styles={customStyles}
                     />
+                    <ArrowDown svg={styles.svgArrowDown} />
                     {errors.category && touched.category && (
                       <div className={styles.error}>category cost required</div>
                     )}

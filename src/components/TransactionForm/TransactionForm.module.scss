@@ -212,6 +212,7 @@
 
 .containerInput {
   margin-bottom: 40px;
+  position: relative;
 }
 
 .SelectorContainer {
@@ -322,4 +323,14 @@
 
 .optionChoose[select] {
   color: #000000;
+}
+
+.svgArrowDown {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 18px;
+  height: 9px;
+  cursor: pointer;
+  pointer-events: none;
 }
