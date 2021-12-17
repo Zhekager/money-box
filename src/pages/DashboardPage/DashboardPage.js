@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState, Suspense, useEffect } from 'react';
 import Media from 'react-media';
 import {
   // useNavigate,
@@ -7,6 +7,12 @@ import {
   Navigate,
   useLocation,
 } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import transactionOperations from '../../redux/transactions/transaction-operations';
+import authSelectors from '../../redux/auth/auth-selectors';
+import transactionsSelectors from '../../redux/transactions/transaction-selectors';
+import categorySelectors from '../../redux/categories/categories-selectors';
+import categoriesOperations from '../../redux/categories/categories-operations';
 
 // import routes from '../../assets/routes';
 import Header from '../../components/Header';
@@ -23,17 +29,25 @@ import Balance from '../../components/Balance';
 import DiagramTab from '../../components/DiagramTab';
 import { AddPlus } from '../../components/IconBtn/AddPlus';
 import Layout from '../../components/Layout';
+import Spinner from '../../components/Spinner';
 
 import styles from './DashboardPage.module.scss';
 
 export default function DashboardPage() {
   const sizeScreen = useSizeScreen();
+  const token = useSelector(authSelectors.getToken);
+  const dispatch = useDispatch();
   // const location = useLocation();
   // const navigate = useNavigate();
   const { pathname } = useLocation();
   const [showModal, setShowModal] = useState(false);
   // const goToHomePage = () => navigate('dashboard', { replace: true });
   // const goBack = () => navigate(-1);
+
+  useEffect(() => {
+    dispatch(categoriesOperations.getCategories());
+    dispatch(transactionOperations.getTransactions({ token }));
+  }, [dispatch, token]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -42,6 +56,11 @@ export default function DashboardPage() {
   const onOpenModal = e => {
     setShowModal(true);
   };
+
+  const authLoading = useSelector(authSelectors.getLoading);
+  const transactionsLoading = useSelector(transactionsSelectors.getLoading);
+  const categoriesLoading = useSelector(categorySelectors.loading);
+  const isLoading = authLoading || transactionsLoading || categoriesLoading;
 
   return (
     <>
@@ -112,6 +131,12 @@ export default function DashboardPage() {
                 }
               </Media>
             </Suspense>
+
+            {isLoading && (
+              <div className={styles.spinner}>
+                <Spinner />
+              </div>
+            )}
 
             {(pathname === '/dashboard/home' || pathname === '/dashboard') && (
               <ButtonIcon

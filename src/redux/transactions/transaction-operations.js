@@ -26,15 +26,15 @@ axios.defaults.baseURL = BASE_URL;
 
 // axios.defaults.baseURL = 'https://personal-expenses.herokuapp.com';
 
-// const setToken = token => {
-//   if (!axios.defaults.headers.common.Authorization)
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-// };
+const setToken = token => {
+  if (!axios.defaults.headers.common.Authorization)
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
-const getTransactions = () => async dispatch => {
+const getTransactions = token => async dispatch => {
   dispatch(getTransactionsRequest());
   try {
-    // setToken(token);
+    setToken(token);
     const { data } = await axios.get('/api/transactions');
 
     // console.log('Fetch data', data.data.result);

@@ -2,15 +2,12 @@
   padding-top: 60px;
   padding-left: 20px;
   padding-right: 20px;
-  // background-color: rgba(230, 230, 230, 0.474);
-  // // min-width: 320px;
-  // min-height: 100vh;
 }
 
 @media screen and (min-width: 768px) {
   .dashboard {
     padding: 20px 40px 20px 40px;
-    // background-image: #e7eaf2;
+
     height: 100%;
     & .wrapper {
       display: flex;
@@ -22,11 +19,6 @@
 @media screen and (min-width: 1280px) {
   .dashboard {
     padding: 40px 85px 0px 85px;
-    // position: relative;
-    // width: 1280px;
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: center;
 
     & .wrapper {
       display: flex;
@@ -40,64 +32,16 @@
 }
 
 @media (min-width: 768px) {
-  // .dashboard {
-  //   background-position: left bottom, right top 80px;
-  //   background-repeat: no-repeat;
-  //   position: relative;
-  // }
-
-  // .dashboard::before {
-  //   content: '';
-  //   display: block;
-  //   width: 456px;
-  //   height: 486px;
-  //   position: absolute;
-  //   top: 0;
-  //   right: 0;
-  //   background-image: url(../../assets/images/ellipse-pink.png);
-  //   background-size: cover;
-  //   filter: blur(50px);
-  // }
-
-  // .dashboard::after {
-  //   content: '';
-  //   display: block;
-  //   width: 539px;
-  //   height: 439px;
-  //   position: absolute;
-  //   left: 0;
-  //   bottom: 0;
-  //   background-image: url(../../assets/images/ellipse-violet.png);
-  //   background-size: cover;
-  //   filter: blur(50px);
-  // }
-
   .wrapper {
-    // width: 688px;
     height: calc(100% - 80px);
 
-    // height: 100vh;
     z-index: 2;
     position: relative;
   }
 }
 
 @media (min-width: 1280px) {
-  // .dashboard::before {
-  //   content: '';
-  //   // display: block;
-  //   width: 640px;
-  //   height: 486px;
-  //   position: absolute;
-  //   top: 0;
-  //   right: 0;
-  //   background-image: url(../../assets/images/ellipse-pink.png);
-  //   background-size: cover;
-  //   filter: blur(50px);
-  // }
-
   .wrapper {
-    // width: 1110px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -107,7 +51,7 @@
     position: absolute;
     left: 380px;
     top: -50px;
-    // height: 770px;
+
     height: 107%;
     margin-bottom: 0;
     border-right: 1px solid #e7e5f2;
@@ -128,4 +72,11 @@
   width: 20px;
   height: 20px;
   fill: #ffffff;
+}
+
+.spinner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
 }
