@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Select from 'react-select';
-// import { Form as FormSelect, Select } from 'react-formik-ui';
 import moment from 'moment';
 import Box from '@material-ui/core/Box';
 import DatePicker from 'react-datepicker';
@@ -13,12 +12,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import transactionOperations from '../../redux/transactions/transaction-operations';
 import transactionsSelectors from '../../redux/transactions/transaction-selectors';
 import categorySelectors from '../../redux/categories/categories-selectors';
-import categoriesOperations from '../../redux/categories/categories-operations';
+// import categoriesOperations from '../../redux/categories/categories-operations';
 
 //components
 import ButtonMain from '../ButtonMain';
 import Switch from './Switch';
-import SelectCategory from './SelectCategory';
 import { Calendar } from '../IconBtn/Calendar';
 import Spinner from '../Spinner';
 import { ArrowDown } from '../IconBtn/ArrowDown';
@@ -42,10 +40,6 @@ export default function TransactionForm({ onClose }) {
   const [isOpenDate, setIsOpenDate] = useState(false);
   const [type, setType] = useState('-');
   const [category, setCategory] = useState({ value: null, label: '' });
-
-  useEffect(() => {
-    dispatch(categoriesOperations.getCategories());
-  }, [dispatch]);
 
   const allCategories = useSelector(categorySelectors.getAllCategories);
   // console.log('CATEG', allCategories);
@@ -170,85 +164,6 @@ export default function TransactionForm({ onClose }) {
                 onSwitch={handleChangeType}
                 value="type"
               />
-
-              {/* {chooseType ? (
-                <Box className={styles.categoryBox}>
-                  <SelectCategory label="category" name="category">
-                    <option className={styles.optionSelect} value="">
-                      Choose category
-                    </option>
-
-                    {addIncomes.map(category => (
-                      <option
-                        className={styles.optionChoose}
-                        key={category._id}
-                        value={category.name}
-                      >
-                        {category.name}
-                      </option>
-                    ))}
-                  </SelectCategory>
-                </Box>
-              ) : (
-                <Box className={styles.categoryBox}>
-                  <SelectCategory label="category" name="category">
-                    <option className={styles.optionSelect} value="">
-                      Choose category
-                    </option>
-
-                    {categories.map(category => (
-                      <option
-                        className={styles.optionChoose}
-                        key={category._id}
-                        value={category.name}
-                      >
-                        {category.name}
-                      </option>
-                    ))}
-                  </SelectCategory>
-                </Box>
-              )} */}
-
-              {/* {chooseType ? (
-                <Box className={styles.categoryBox}>
-                  <SelectCategory label="category" name="category">
-                    <option
-                      className={styles.optionSelect}
-                      value=""
-                      label="Choose category"
-                    />
-                    {allCategoriesIncomes.map((category, i) => (
-                      <option
-                        className={styles.optionChoose}
-                        key={i}
-                        value={category}
-                      >
-                        {category}
-                      </option>
-                    ))}
-                  </SelectCategory>
-                </Box>
-              ) : (
-                <Box className={styles.categoryBox}>
-                  <SelectCategory label="category" name="category">
-                    <option
-                      className={styles.optionSelect}
-                      value=""
-                      label="Choose category"
-                    />
-
-                    {allCategoriesCosts.map((category, i) => (
-                      <option
-                        className={styles.optionChoose}
-                        key={i}
-                        value={category}
-                      >
-                        {category}
-                      </option>
-                    ))}
-                  </SelectCategory>
-                </Box>
-              )} */}
 
               <Form className={styles.categoryBox}>
                 {chooseType && (

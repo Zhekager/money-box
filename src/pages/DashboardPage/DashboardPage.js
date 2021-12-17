@@ -7,14 +7,13 @@ import {
   Navigate,
   useLocation,
 } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import transactionOperations from '../../redux/transactions/transaction-operations';
+import { useSelector, useDispatch } from 'react-redux';
+// import transactionOperations from '../../redux/transactions/transaction-operations';
 import authSelectors from '../../redux/auth/auth-selectors';
 import transactionsSelectors from '../../redux/transactions/transaction-selectors';
 import categorySelectors from '../../redux/categories/categories-selectors';
 import categoriesOperations from '../../redux/categories/categories-operations';
 
-// import routes from '../../assets/routes';
 import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import HomeTab from '../../components/HomeTab';
@@ -35,7 +34,7 @@ import styles from './DashboardPage.module.scss';
 
 export default function DashboardPage() {
   const sizeScreen = useSizeScreen();
-  const token = useSelector(authSelectors.getToken);
+  // const token = useSelector(authSelectors.getToken);
   const dispatch = useDispatch();
   // const location = useLocation();
   // const navigate = useNavigate();
@@ -46,8 +45,8 @@ export default function DashboardPage() {
 
   useEffect(() => {
     dispatch(categoriesOperations.getCategories());
-    dispatch(transactionOperations.getTransactions({ token }));
-  }, [dispatch, token]);
+    // dispatch(transactionOperations.getTransactions({ token }));
+  }, [dispatch]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -81,7 +80,7 @@ export default function DashboardPage() {
                       <Sidebar />
                       <div>
                         <Routes>
-                          {/* <Route index element={<HomeTab />} /> */}
+                          <Route index element={<HomeTab />} />
                           <Route path="home" element={<HomeTab />} />
                           <Route path="statistics" element={<DiagramTab />} />
                           <Route
@@ -101,7 +100,7 @@ export default function DashboardPage() {
                       <Navigation />
 
                       <Routes>
-                        {/* <Route
+                        <Route
                           index
                           element={
                             <>
@@ -109,7 +108,7 @@ export default function DashboardPage() {
                               <HomeTab />
                             </>
                           }
-                        /> */}
+                        />
                         <Route
                           path="home"
                           element={

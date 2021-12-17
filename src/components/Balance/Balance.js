@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import authSelectors from '../../redux/auth/auth-selectors';
-import transactionOperations from '../../redux/transactions/transaction-operations';
+// import transactionOperations from '../../redux/transactions/transaction-operations';
 
 import styles from './Balance.module.scss';
 
@@ -9,12 +9,6 @@ const Balance = () => {
   const transactions = useSelector(authSelectors.getTransactionsAuth);
   const lastBalance = useSelector(authSelectors.getTransactionAuthBalance);
   const arrBalances = useSelector(authSelectors.getArrTransactionAuthBalance);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(transactionOperations.getTransactions());
-  }, [dispatch]);
 
   const formatSum = sum => {
     return new Intl.NumberFormat('ua-UA', {
