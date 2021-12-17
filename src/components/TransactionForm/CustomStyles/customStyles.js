@@ -1,3 +1,5 @@
+import { Hidden } from '@material-ui/core';
+
 const customStyles = {
   option: (provided, state) => ({
     ...provided,
@@ -5,8 +7,8 @@ const customStyles = {
     backgroundColor:
       state.isSelected || state.isFocused ? '#FFFFFF' : 'inherit',
     paddingLeft: 20,
-    paddingTop: 13,
-    height: 44,
+    paddingTop: 10,
+    height: 34,
     border: 'none',
     cursor: 'pointer',
   }),
@@ -68,9 +70,9 @@ const customStyles = {
     '@media screen and (min-width: 320px)': {
       maxHeight: 352,
     },
-    '@media screen and (min-width: 768px)': {
-      maxHeight: 411,
-    },
+    // '@media screen and (min-width: 768px)': {
+    //   maxHeight: 411,
+    // },
     padding: 0,
     backdropFilter: 'blur(50px)',
     borderRadius: 20,

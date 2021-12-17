@@ -1,6 +1,6 @@
 @import '../../stylesheet';
 
-.container {
+.containerForm {
   margin-left: auto;
   margin-right: auto;
   width: 540px;
@@ -13,12 +13,12 @@
   height: 100vh;
   border-radius: 0;
 
-  @media (min-width: $tablet) {
+  @media (min-width: 768px) {
     width: 540px;
-    // min-height: 617px;
     padding: 30px 60px;
     border-radius: 20px;
     // min-height: 540px;
+    height: 617px;
     max-height: 617px; // це тимчасово, поки не буде готова і поправлена сторінка Дашборду
   }
 }
@@ -155,7 +155,7 @@
     height: 100%;
   }
 
-  .container {
+  .containerForm {
     background-color: #ffffff;
     width: 100vw;
     margin-left: auto;

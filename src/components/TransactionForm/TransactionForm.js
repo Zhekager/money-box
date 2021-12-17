@@ -147,7 +147,7 @@ export default function TransactionForm({ onClose }) {
 
   return (
     <div className={styles.modal}>
-      <div className={styles.container}>
+      <div className={styles.containerForm}>
         <Formik
           initialValues={{
             type: !chooseType ? '-' : '+',
