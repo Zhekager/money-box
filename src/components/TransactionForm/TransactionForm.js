@@ -86,7 +86,7 @@ export default function TransactionForm({ onClose }) {
     setIsOpenDate(!isOpenDate);
   };
 
-  const dateMoment = moment(new Date()).format('DD.MM.YYYY');
+  // const dateMoment = moment(new Date()).format('DD.MM.YYYY');
 
   const handleClick = e => {
     if (e.currentTarget === e.target) {
@@ -151,14 +151,14 @@ export default function TransactionForm({ onClose }) {
             type: !chooseType ? '-' : '+',
             category: category.value,
             money: '',
-            date: dateMoment,
+            date: moment(startDate).format('DD.MM.YYYY'),
             comment: '',
           }}
           onSubmit={handleSubmitForm}
           validationSchema={validationsSchema}
           enableReinitialize
         >
-          {({ errors, touched }) => (
+          {({ errors, touched, setFieldValue }) => (
             <Form className={styles.form}>
               <h3 className={styles.title}>Add transaction</h3>
 
@@ -227,6 +227,10 @@ export default function TransactionForm({ onClose }) {
                     open={false}
                     className={styles.Date}
                     selected={startDate}
+                    // onChange={date =>
+                    //   setStartDate(moment(date).format('DD.MM.YYYY'))
+                    // }
+                    // onChange={date => setStartDate(date)}
                     onChange={handleChangeDate}
                     dateFormat="dd.MM.yyyy"
                     locale="ru"
@@ -246,6 +250,7 @@ export default function TransactionForm({ onClose }) {
                         showDisabledMonthNavigation
                         closeOnScroll={true}
                         selected={startDate}
+                        // onChange={date => setStartDate(date)}
                         onChange={handleChangeDate}
                         locale="ru"
                         inline
