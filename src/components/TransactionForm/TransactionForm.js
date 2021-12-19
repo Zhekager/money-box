@@ -4,8 +4,9 @@ import * as Yup from 'yup';
 import Select from 'react-select';
 import moment from 'moment';
 import Box from '@material-ui/core/Box';
-import DatePicker from 'react-datepicker';
+import DatePicker, { registerLocale } from 'react-datepicker';
 import { addMonths } from 'date-fns';
+import ru from 'date-fns/locale/ru';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -31,6 +32,8 @@ import { ArrowDown } from '../IconBtn/ArrowDown';
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from './TransactionForm.module.scss';
 import customStyles from './CustomStyles/customStyles';
+
+registerLocale('ru', ru);
 
 export default function TransactionForm({ onClose }) {
   const dispatch = useDispatch();
@@ -165,7 +168,7 @@ export default function TransactionForm({ onClose }) {
                 value="type"
               />
 
-              <Form className={styles.categoryBox}>
+              <div className={styles.categoryBox}>
                 {chooseType && (
                   <div className={styles.containerInput}>
                     <Select
@@ -201,7 +204,7 @@ export default function TransactionForm({ onClose }) {
                     )}
                   </div>
                 )}
-              </Form>
+              </div>
 
               <div className={styles.Credentials}>
                 <div className={styles.BoxContainer}>
@@ -226,6 +229,7 @@ export default function TransactionForm({ onClose }) {
                     selected={startDate}
                     onChange={handleChangeDate}
                     dateFormat="dd.MM.yyyy"
+                    locale="ru"
                   />
 
                   <button
@@ -243,6 +247,7 @@ export default function TransactionForm({ onClose }) {
                         closeOnScroll={true}
                         selected={startDate}
                         onChange={handleChangeDate}
+                        locale="ru"
                         inline
                       />
                     </div>

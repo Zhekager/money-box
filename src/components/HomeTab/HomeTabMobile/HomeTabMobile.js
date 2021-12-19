@@ -2,17 +2,19 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import transactionOperations from '../../../redux/transactions/transaction-operations';
 import transactionsSelectors from '../../../redux/transactions/transaction-selectors';
+import authSelectors from '../../../redux/auth/auth-selectors';
 
 import styles from './HomeTabMobile.module.scss';
 
 export default function HomeTabMobile() {
   const dispatch = useDispatch();
+  const token = useSelector(authSelectors.getToken);
   const array = useSelector(transactionsSelectors.getTransactions);
   const arr = Array.from(array);
 
   useEffect(() => {
-    dispatch(transactionOperations.getTransactions());
-  }, [dispatch]);
+    dispatch(transactionOperations.getTransactions({ token }));
+  }, [dispatch, token]);
 
   const formatSum = sum => {
     return new Intl.NumberFormat('ua-UA', {
