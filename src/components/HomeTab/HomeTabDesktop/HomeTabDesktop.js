@@ -18,6 +18,31 @@ export default function HomeTabDesktop() {
     dispatch(transactionOperations.getTransactions({ token }));
   }, [dispatch, token]);
 
+  // arr.sort((a, b) => {
+  //   const aDate = a.date.split('.');
+  //   const bDate = b.date.split('.');
+  //   return (
+  //     new Date(bDate[2], Number(bDate[1]) - 1, bDate[0]).getTime() -
+  //     new Date(aDate[2], Number(aDate[1]) - 1, aDate[0]).getTime()
+  //   );
+  // });
+
+  arr.sort((a, b) => {
+    const aDate = a.date.split('.');
+    const bDate = b.date.split('.');
+
+    const aDateA = aDate[2] * 360 + aDate[1] * 30 + aDate[0];
+    const bDateB = bDate[2] * 360 + bDate[1] * 30 + bDate[0];
+
+    if (aDateA > bDateB) {
+      return -1;
+    }
+    if (aDateA < bDateB) {
+      return 1;
+    }
+    return 0;
+  });
+
   const formatSum = sum => {
     return new Intl.NumberFormat('ua-UA', {
       maximumFractionDigits: 2,

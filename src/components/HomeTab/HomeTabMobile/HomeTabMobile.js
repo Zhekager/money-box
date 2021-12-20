@@ -16,6 +16,22 @@ export default function HomeTabMobile() {
     dispatch(transactionOperations.getTransactions({ token }));
   }, [dispatch, token]);
 
+  arr.sort((a, b) => {
+    const aDate = a.date.split('.');
+    const bDate = b.date.split('.');
+
+    const aDateA = aDate[2] * 360 + aDate[1] * 30 + aDate[0];
+    const bDateB = bDate[2] * 360 + bDate[1] * 30 + bDate[0];
+
+    if (aDateA > bDateB) {
+      return -1;
+    }
+    if (aDateA < bDateB) {
+      return 1;
+    }
+    return 0;
+  });
+
   const formatSum = sum => {
     return new Intl.NumberFormat('ua-UA', {
       maximumFractionDigits: 2,
