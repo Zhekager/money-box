@@ -4,9 +4,6 @@ import * as Yup from 'yup';
 import Select from 'react-select';
 import moment from 'moment';
 import Box from '@material-ui/core/Box';
-import DatePicker, { registerLocale } from 'react-datepicker';
-import { addMonths } from 'date-fns';
-import ru from 'date-fns/locale/ru';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +15,7 @@ import categorySelectors from '../../redux/categories/categories-selectors';
 //components
 import ButtonMain from '../ButtonMain';
 import Switch from './Switch';
-import { Calendar } from '../IconBtn/Calendar';
+import Picker from './Picker/Picker';
 import Spinner from '../Spinner';
 import { ArrowDown } from '../IconBtn/ArrowDown';
 
@@ -33,14 +30,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import styles from './TransactionForm.module.scss';
 import customStyles from './CustomStyles/customStyles';
 
-registerLocale('ru', ru);
+// registerLocale('ru', ru);
 
 export default function TransactionForm({ onClose }) {
   const dispatch = useDispatch();
   const isLoading = useSelector(transactionsSelectors.getLoading);
   const [chooseType, setChooseType] = useState(false);
-  const [startDate, setStartDate] = useState(new Date());
-  const [isOpenDate, setIsOpenDate] = useState(false);
   const [type, setType] = useState('-');
   const [category, setCategory] = useState({ value: null, label: '' });
 
@@ -75,16 +70,6 @@ export default function TransactionForm({ onClose }) {
   };
 
   console.log(type);
-
-  const handleChangeDate = e => {
-    setIsOpenDate(!isOpenDate);
-    setStartDate(e);
-  };
-
-  const handleClickDate = e => {
-    e.preventDefault();
-    setIsOpenDate(!isOpenDate);
-  };
 
   // const dateMoment = moment(new Date()).format('DD.MM.YYYY');
 
@@ -151,7 +136,7 @@ export default function TransactionForm({ onClose }) {
             type: !chooseType ? '-' : '+',
             category: category.value,
             money: '',
-            date: moment(startDate).format('DD.MM.YYYY'),
+            date: moment(new Date()).format('DD.MM.YYYY'),
             comment: '',
           }}
           onSubmit={handleSubmitForm}
@@ -182,7 +167,7 @@ export default function TransactionForm({ onClose }) {
                     <ArrowDown svg={styles.svgArrowDown} />
                     {errors.category && touched.category && (
                       <div className={styles.error}>
-                        category income required
+                        category income is required
                       </div>
                     )}
                   </div>
@@ -200,7 +185,9 @@ export default function TransactionForm({ onClose }) {
                     />
                     <ArrowDown svg={styles.svgArrowDown} />
                     {errors.category && touched.category && (
-                      <div className={styles.error}>category cost required</div>
+                      <div className={styles.error}>
+                        category cost is required
+                      </div>
                     )}
                   </div>
                 )}
@@ -219,45 +206,15 @@ export default function TransactionForm({ onClose }) {
                   )}
                 </div>
 
-                <Box className={styles.DateBox}>
-                  <DatePicker
-                    maxDate={addMonths(new Date(), 0)}
-                    showDisabledMonthNavigation
-                    name="date"
-                    open={false}
-                    className={styles.Date}
-                    selected={startDate}
-                    // onChange={date =>
-                    //   setStartDate(moment(date).format('DD.MM.YYYY'))
-                    // }
-                    // onChange={date => setStartDate(date)}
-                    onChange={handleChangeDate}
-                    dateFormat="dd.MM.yyyy"
-                    locale="ru"
-                  />
-
-                  <button
-                    className={styles.BtnIconCalendar}
-                    onClick={handleClickDate}
-                  >
-                    <Calendar svg={styles.svgCalendar} />
-                  </button>
-
-                  {isOpenDate && (
-                    <div className={styles.datePicker}>
-                      <DatePicker
-                        maxDate={addMonths(new Date(), 0)}
-                        showDisabledMonthNavigation
-                        closeOnScroll={true}
-                        selected={startDate}
-                        // onChange={date => setStartDate(date)}
-                        onChange={handleChangeDate}
-                        locale="ru"
-                        inline
-                      />
-                    </div>
-                  )}
-                </Box>
+                <Picker
+                  name="date"
+                  onChange={date =>
+                    setFieldValue(
+                      'date',
+                      (date = moment(date).format('DD.MM.YYYY')),
+                    )
+                  }
+                />
               </div>
 
               <Box className={styles.box_select}>
