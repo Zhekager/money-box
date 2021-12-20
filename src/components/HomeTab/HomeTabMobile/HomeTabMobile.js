@@ -29,7 +29,7 @@ export default function HomeTabMobile() {
     if (aDateA < bDateB) {
       return 1;
     }
-    return 0;
+    return -1;
   });
 
   const formatSum = sum => {
