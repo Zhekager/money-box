@@ -83,21 +83,39 @@ const filterTransaction = (month, year) => async dispatch => {
   }
 };
 
-const getStatistics =
-  ({ month, year }) =>
-  async dispatch => {
-    dispatch(getStatisticsRequest());
-    try {
-      const { data } = await axios.get(
-        `api/transactions/statistics?month=${month}&year=${year}`,
-      );
-      // console.log(data.data);
+// const getStatistics =
+//   ({ month, year }) =>
+//   async dispatch => {
+//     dispatch(getStatisticsRequest());
+//     try {
+//       const { data } = await axios.get(
+//         `api/transactions/statistics?month=${month}&year=${year}`,
+//       );
+//       // console.log(data.data);
 
-      dispatch(getStatisticsSuccess(data.data));
-    } catch (error) {
-      dispatch(getStatisticsError(error.message));
+//       dispatch(getStatisticsSuccess(data.data));
+//     } catch (error) {
+//       dispatch(getStatisticsError(error.message));
+//     }
+//   };
+
+const getStatistics = params => async dispatch => {
+  const { year, month } = params;
+
+  dispatch(getStatisticsRequest());
+  try {
+    const { data } = await axios.get('api/transactions/statistics', {
+      params: { year, month },
+    });
+    // console.log(data.data);
+    dispatch(getStatisticsSuccess(data.data));
+  } catch (error) {
+    if (error.response.statusText === 'Unauthorized') {
+      window.location.reload();
     }
-  };
+    dispatch(getStatisticsError(error.message));
+  }
+};
 
 /////////////////
 // edit/delete

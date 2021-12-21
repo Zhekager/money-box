@@ -50,7 +50,6 @@ const customStyles = {
   menu: provided => ({
     ...provided,
     backgroundColor: 'inherit',
-
     borderRadius: 20,
     boxShadow: 'none',
   }),

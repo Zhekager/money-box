@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import transactionsSelectors from '../../redux/transactions/transaction-selectors';
 import MyChart from '../Chart';
-import Table from '../Table';
+import Table from './Table';
 
 import styles from './DiagramTab.module.scss';
 

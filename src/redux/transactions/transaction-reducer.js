@@ -29,9 +29,12 @@ const result = createReducer([], {
   // [deleteTransactionsSuccess]: (state, { payload }) => [...state, payload],
 });
 
-const filter = createReducer('', {
-  [filterTransSuccess]: (_, { payload }) => payload,
-});
+const filter = createReducer(
+  {},
+  {
+    [filterTransSuccess]: (_, { payload }) => payload,
+  },
+);
 
 const loading = createReducer(false, {
   [getTransactionsRequest]: () => true,

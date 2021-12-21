@@ -6,14 +6,7 @@ const getLoading = state => state.transactions.loading;
 const getError = state => state.transactions.error;
 const getFilter = state => state.transactions.filter;
 const getStatistics = state => state.transactions.result;
-
-//export const getYears = state => state.transactions.years;
-//export const getCategoriesTransactions = state => state.transactions.categories;
-//export const totalTransactions = state => getTransactions(state).length;
-
-// const getCategoryByName = createSelector([getTransactions], transactions => {
-//   return transactions.result.find(transaction => transaction.category);
-// });
+const getYears = state => state.transactions.result.uniqueYear;
 
 const getVisibleTransactions = createSelector(
   [getTransactions, getFilter],
@@ -21,6 +14,7 @@ const getVisibleTransactions = createSelector(
     return transactions.filter(({ data }) => data.includes(filter));
   },
 );
+
 const transactionsSelectors = {
   getTransactions,
   getTransactionsUser,
@@ -28,7 +22,7 @@ const transactionsSelectors = {
   getError,
   getFilter,
   getStatistics,
-  // getCategoryByName,
   getVisibleTransactions,
+  getYears,
 };
 export default transactionsSelectors;
