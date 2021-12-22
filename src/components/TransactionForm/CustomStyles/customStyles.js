@@ -32,21 +32,23 @@ const customStyles = {
   singleValue: provided => ({
     ...provided,
     margin: 0,
-    height: 20,
+    height: 24,
+    fontFamily: 'Circe, sans-serif',
+    fontSize: 18,
+    lineHeight: 1.5,
   }),
 
   input: provided => ({
     ...provided,
     margin: 0,
     padding: 0,
-    height: 20,
     color: '#000000',
-    fontFamily: 'Circe, sans-serif',
   }),
 
   indicatorsContainer: () => ({
     display: 'none',
   }),
+
   menu: provided => ({
     ...provided,
     backgroundColor: 'inherit',
@@ -74,6 +76,8 @@ const customStyles = {
     backdropFilter: 'blur(50px)',
     borderRadius: 20,
     boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
+    // fontSize: 18,
+    // lineHeight: 1.5,
   }),
   container: provided => ({
     ...provided,
