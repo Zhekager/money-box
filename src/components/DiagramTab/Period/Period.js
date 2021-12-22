@@ -93,7 +93,7 @@ const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
             name="SelectedMonth"
             onChange={validateMonth}
             options={sortMonth(allMonths)}
-            placeholder="Month"
+            placeholder={monthState}
             styles={customStyles}
           />
           <ArrowDown svg={styles.svgArrowDown} />
@@ -105,7 +105,7 @@ const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
             name="SelectedYear"
             onChange={validateYears}
             options={sortYears(allYears())}
-            placeholder="Year"
+            placeholder={yearState}
             styles={customStyles}
           />
           <ArrowDown svg={styles.svgArrowDown} />
