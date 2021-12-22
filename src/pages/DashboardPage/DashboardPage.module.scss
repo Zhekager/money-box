@@ -3,65 +3,62 @@
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 30px;
-}
 
-@media screen and (min-width: 768px) {
-  .dashboard {
+  @media screen and (min-width: 768px) {
     padding: 20px 30px;
-
     height: 100%;
-    & .wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
   }
-}
-@media screen and (min-width: 1280px) {
-  .dashboard {
+
+  @media screen and (min-width: 1280px) {
     padding: 40px 70px 0px 70px;
-
-    & .wrapper {
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      min-height: 100vh;
-      flex-direction: row;
-      justify-content: space-between;
-    }
   }
 }
 
-@media (min-width: 768px) {
-  .wrapper {
-    height: calc(100% - 80px);
+.dashboard .wrapper {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    min-height: 100vh;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.wrapper {
+  @media screen and (min-width: 768px) {
+    height: calc(100% - 80px);
     z-index: 2;
     position: relative;
   }
-}
 
-@media (min-width: 1280px) {
-  .wrapper {
+  @media screen and (min-width: 1280px) {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
+}
 
-  .dashboardAside {
+.dashboardAside {
+  @media screen and (max-width: 768px) {
+    opacity: 0;
+  }
+
+  @media screen and (min-width: 1280px) {
     position: absolute;
     left: 380px;
     top: -50px;
-
     height: 107%;
     margin-bottom: 0;
     border-right: 1px solid #e7e5f2;
     box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
       1px 0px 0px rgba(255, 255, 255, 0.6);
-
-    @media (max-width: 768px) {
-      opacity: 0;
-    }
   }
 }
 
