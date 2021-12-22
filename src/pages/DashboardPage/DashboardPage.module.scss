@@ -1,12 +1,13 @@
 .dashboard {
   padding-top: 60px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 30px;
 }
 
 @media screen and (min-width: 768px) {
   .dashboard {
-    padding: 20px 40px 20px 40px;
+    padding: 20px 30px;
 
     height: 100%;
     & .wrapper {
@@ -18,7 +19,7 @@
 }
 @media screen and (min-width: 1280px) {
   .dashboard {
-    padding: 40px 85px 0px 85px;
+    padding: 40px 70px 0px 70px;
 
     & .wrapper {
       display: flex;

@@ -3,7 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Select from 'react-select';
 import moment from 'moment';
-import Box from '@material-ui/core/Box';
+// import Box from '@material-ui/core/Box';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -217,22 +217,22 @@ export default function TransactionForm({ onClose }) {
                 />
               </div>
 
-              <Box className={styles.box_select}>
-                <div className={styles.BoxContainerComment}>
-                  <Field
-                    name="comment"
-                    // as="textarea"
-                    type="text"
-                    placeholder="Comment"
-                    className={styles.Comment}
-                  />
-                  {errors.comment && touched.comment && (
-                    <div className={styles.inputFeedbackComment}>
-                      {errors.comment}
-                    </div>
-                  )}
-                </div>
-              </Box>
+              {/* <Box className={styles.box_select}> */}
+              <div className={styles.BoxContainerComment}>
+                <Field
+                  name="comment"
+                  // as="textarea"
+                  type="text"
+                  placeholder="Comment"
+                  className={styles.Comment}
+                />
+                {errors.comment && touched.comment && (
+                  <div className={styles.inputFeedbackComment}>
+                    {errors.comment}
+                  </div>
+                )}
+              </div>
+              {/* </Box> */}
 
               <ButtonMain type="submit" contentBtn="Add" button="Button" />
 

@@ -1,37 +1,85 @@
-@import '../../stylesheet';
+@import '../../stylesheet/index.scss';
+
+.modal {
+  overflow-y: scroll;
+  max-height: 100vh;
+  background-color: #ffffff;
+
+  @media screen and (max-width: 767px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar {
+    height: 100%;
+    width: 5px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-track-piece:corner-present {
+    margin-top: 12px;
+  }
+  &::-webkit-scrollbar-track-piece:start {
+    background: transparent;
+    margin-top: 15px;
+    overflow: hidden;
+  }
+
+  &::-webkit-scrollbar-track-piece:end {
+    background: transparent;
+    margin-bottom: 15px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #24cca7;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background: transparent;
+  }
+}
 
 .containerForm {
   margin-left: auto;
   margin-right: auto;
-  width: 540px;
-  // min-height: 540;
-  background-color: #ffffff;
-
   padding-left: 20px;
   padding-right: 20px;
-  //max-width: 100vw;
+  width: 100vw;
   height: 100vh;
+  background-color: #ffffff;
   border-radius: 0;
 
   @media (min-width: 768px) {
     width: 540px;
     padding: 30px 60px;
     border-radius: 20px;
-    // min-height: 540px;
-    height: 617px;
-    max-height: 617px; // це тимчасово, поки не буде готова і поправлена сторінка Дашборду
+    height: 560px;
+    max-height: 617px;
   }
 }
 
 .title {
-  margin-top: 0px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  margin-top: 20px;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 30px;
+  font-size: 24px;
   line-height: 1.5;
   text-align: center;
   color: #000000;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0px;
+    font-size: 30px;
+  }
 }
 
 .text {
@@ -48,33 +96,51 @@
   color: #e0e0e0;
 }
 
+.categoryBox {
+  display: block;
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 411px;
+  }
+}
+
 .Credentials {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .Amount {
-  padding: 0 5px 10px 5px;
-
-  width: 190px;
+  width: 280px;
   height: 34px;
   font-size: 18px;
   line-height: 1.5;
   font-weight: 400;
   color: #000000;
-
   border: none;
   outline: none;
-  // border-bottom: 1px solid #e0e0e0;
   line-height: 1.5;
 
   &::placeholder {
+    text-align: left;
     font-family: 'Circe', sans-serif;
     font-weight: 400;
     font-size: 18px;
-    text-align: left;
     color: #bdbdbd;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 0 5px 10px 5px;
+    width: 190px;
   }
 }
 
@@ -92,6 +158,13 @@
   position: relative;
   border-bottom: 1px solid #e0e0e0;
   margin-bottom: 34px;
+  width: 280px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 411px;
+  }
 }
 
 .inputFeedback {
@@ -115,7 +188,6 @@
   margin-left: auto;
   margin-right: auto;
   width: 280px;
-  // height: 44px;
 
   padding: 0 5px 10px 5px;
   color: #000000;
@@ -123,7 +195,6 @@
   font-size: 18px;
   line-height: 1.5;
   border: none;
-  // border-bottom: 1px solid #e0e0e0;
 
   outline: none;
   resize: none;
@@ -133,7 +204,7 @@
     color: #bdbdbd;
   }
 
-  @media (min-width: $tablet) {
+  @media (min-width: 768px) {
     width: 100%;
   }
 }
@@ -144,71 +215,14 @@
 
 ///mobile
 @media screen and (max-width: 767px) {
-  .modal {
-    // overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    height: 100%;
-  }
-
-  .containerForm {
-    background-color: #ffffff;
-    width: 100vw;
-    margin-left: auto;
-  }
-
-  .title {
-    font-size: 24px;
-    line-height: 1.5;
-    margin-top: 20px;
-  }
-
-  .select {
-    width: 280px;
-    height: 34px;
-    display: flex;
-    align-items: center;
-  }
-  .Credentials {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .Amount {
-    width: 280px;
-    height: 34px;
-
-    &::placeholder {
-      text-align: left;
-    }
-  }
-
-  .box_select {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: none;
-  }
-
-  .categoryBox {
-    display: block;
-    width: 280px;
-    max-width: 280px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  // .box_select {
+  //   width: 100%;
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   border: none;
+  // }
 }
-
-// .categoryBox {
-//   display: flex;
-//   flex-direction: column;
-//   width: 100%;
-// }
 
 .containerInput {
   margin-bottom: 40px;
@@ -218,33 +232,7 @@
 .SelectorContainer {
   // position: relative;
   margin-bottom: 40px;
-
-  // @media screen and (min-width: 768px) {
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  // }
 }
-
-// .SelectCategory {
-//   margin: 0;
-//   width: 100%;
-//   padding-bottom: 10px;
-//   font-family: 'Circe', sans-serif;
-//   font-weight: 400;
-//   font-size: 18px;
-//   line-height: 1.5;
-//   color: #bdbdbd;
-//   border: none;
-//   background: transparent;
-//   border-bottom: 1px solid #e0e0e0;
-//   outline: none;
-
-//   &:checked,
-//   &[selected] {
-//     color: #000000;
-//   }
-// }
 
 .DateBox {
   position: relative;
@@ -252,7 +240,6 @@
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #e0e0e0;
-  // z-index: 1;
 }
 
 .Date {
@@ -302,27 +289,6 @@
   line-height: 1.5;
   color: #bdbdbd;
   // color: #000000;
-}
-
-.optionChoose {
-  margin: 0;
-  font-family: 'Circe', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.5;
-  color: #000000;
-  background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(50px);
-  border-radius: 20px;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-}
-
-.optionChoose[select] {
-  color: #000000;
 }
 
 .svgArrowDown {

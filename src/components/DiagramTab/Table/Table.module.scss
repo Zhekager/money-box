@@ -10,14 +10,16 @@ ul {
 }
 
 .tableContainer {
-  width: 350px;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
 
-  margin-left: 35px;
-
-  @media (min-width: $mobile) and (max-width: 767px) {
-    width: 280px;
-    margin-right: auto;
-    margin-left: auto;
+  @media screen and (min-width: 768px) {
+    width: 350px;
+    margin-left: 35px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -26,29 +28,8 @@ ul {
 }
 
 .selectContainer {
-  display: flex;
-  justify-content: space-between;
-
-  @media (min-width: $mobile) and (max-width: 767px) {
-    display: flex;
-    flex-direction: column;
-    width: 280px;
-  }
-}
-
-.select {
   margin-bottom: 20px;
-  font-family: 'Circe', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  outline: none;
-}
-
-.categoryContainer {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 .listTitle {
@@ -56,7 +37,7 @@ ul {
   justify-content: space-between;
   height: 58px;
   margin-top: 0;
-  margin-bottom: 9px;
+  // margin-bottom: 9px;
   border-radius: 29px;
   align-items: center;
   background-color: #fff;

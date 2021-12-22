@@ -1,85 +1,3 @@
-// import { useState } from 'react';
-// import Select from 'react-select';
-
-// import styles from './Period.module.scss';
-
-// const allMonths = [
-//   { name: 'All months', id: '0' },
-//   { name: 'January', id: '1' },
-//   { name: 'February', id: '2' },
-//   { name: 'March', id: '3' },
-//   { name: 'April', id: '4' },
-//   { name: 'May', id: '5' },
-//   { name: 'June', id: '6' },
-//   { name: 'July', id: '7' },
-//   { name: 'August', id: '8' },
-//   { name: 'September', id: '9' },
-//   { name: 'October', id: '10' },
-//   { name: 'November', id: '11' },
-//   { name: 'December', id: '12' },
-// ];
-
-// const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
-//   const date = new Date();
-//   const [monthsState, setMonthState] = useState(
-//     () => allMonths[date.getUTCMonth() + 1].name,
-//   );
-//   const [yearState, setYearState] = useState(() => date.getFullYear());
-
-//   const allYears = ['Year', ...years];
-
-//   const validateMounth = e => {
-//     const b = allMonths.indexOf(e.target.value);
-//     setMonthState(e.target.value);
-
-//     if (b === allMonths[0]) {
-//       setRequestedMonth('');
-//       return;
-//     }
-//     setRequestedMonth(b);
-//   };
-
-//   const validateYears = e => {
-//     if (e.target.value === 'Год') {
-//       return;
-//     }
-//     setRequestedYear(e.target.value);
-//     setYearState(e.target.value);
-//   };
-
-//   return (
-//     <>
-//       <form className={styles.form}>
-//         <select
-//           name="SelectedMounth"
-//           className={styles.select}
-//           id="area"
-//           onChange={validateMounth}
-//           value={monthsState}
-//         >
-//           {allMonths.map(month => (
-//             <option key={month}>{month}</option>
-//           ))}
-//         </select>
-//         <select
-//           name="SelectedYears"
-//           className={styles.select}
-//           id="area"
-//           onChange={validateYears}
-//           value={yearState}
-//         >
-//           {allYears.map(year => (
-//             <option key={year}>{year}</option>
-//           ))}
-//         </select>
-//       </form>
-//     </>
-//   );
-// };
-// export default Period;
-
-///////////////////////////////////
-
 import { useState } from 'react';
 import Select from 'react-select';
 import { ArrowDown } from '../../IconBtn/ArrowDown';
@@ -169,7 +87,7 @@ const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
   return (
     <>
       <form className={styles.form}>
-        <div className={styles.inputWrapper}>
+        <div className={styles.inputWrapperMonth}>
           <Select
             defaultValue="Month"
             name="SelectedMonth"
@@ -181,7 +99,7 @@ const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
           <ArrowDown svg={styles.svgArrowDown} />
         </div>
 
-        <div className={styles.inputWrapper}>
+        <div className={styles.inputWrapperYear}>
           <Select
             defaultValue="Year"
             name="SelectedYear"
