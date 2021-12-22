@@ -6,10 +6,11 @@ export default function HomeTab() {
   return (
     <Media
       queries={{
-        mobile: '(max-width: 767px)',
+        mobileSize: '(max-width: 767px)',
+        otherSize: '(min-width: 768px)',
       }}
     >
-      {({ mobile }) => <>{mobile ? <HomeTabMobile /> : <HomeTabDesktop />}</>}
+      {matches => (matches.mobileSize ? <HomeTabMobile /> : <HomeTabDesktop />)}
     </Media>
   );
 }

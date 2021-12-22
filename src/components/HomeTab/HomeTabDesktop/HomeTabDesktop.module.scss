@@ -39,13 +39,13 @@
 }
 
 .homeTabHeadData {
-  font-family: 'Circe', 'Manrope', sans-serif;
+  font-family: 'Circe', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 1.5;
   text-align: left;
-  padding: 0rem;
+  padding: 0;
 
   &:not(:last-child) {
     flex-basis: auto;

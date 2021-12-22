@@ -34,23 +34,22 @@ function Navigation() {
         </NavLink>
         <Media
           queries={{
-            mobile: '(max-width: 767px)',
+            mobileSize: '(max-width: 767px)',
+            otherSize: '(min-width: 768px)',
           }}
         >
-          {({ mobile }) => (
-            <>
-              {mobile && (
-                <NavLink
-                  to="currency"
-                  className={({ isActive }) => {
-                    return isActive ? styles.navLinkActive : styles.navLink;
-                  }}
-                >
-                  <Currenc svg={styles.svgNav} />
-                </NavLink>
-              )}
-            </>
-          )}
+          {matches =>
+            matches.mobileSize && (
+              <NavLink
+                to="currency"
+                className={({ isActive }) => {
+                  return isActive ? styles.navLinkActive : styles.navLink;
+                }}
+              >
+                <Currenc svg={styles.svgNav} />
+              </NavLink>
+            )
+          }
         </Media>
       </nav>
     </div>
