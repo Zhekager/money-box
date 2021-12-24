@@ -12,19 +12,23 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // import './App.module.scss';
 
+const LoginPage = lazy(() =>
+  import('./pages/LoginPage/LoginPage' /* webpackChunkName: "login-page" */),
+);
+
 const RegistrationPage = lazy(() =>
   import(
-    './pages/RegistrationPage' /* webpackChunkName: "registration-page" */
+    './pages/RegistrationPage/RegistrationPage' /* webpackChunkName: "registration-page" */
   ),
 );
 // const NotFoundPage = lazy(() =>
 //   import('./pages/NotFoundPage' /* webpackChunkName: "not-found-page" */),
 // );
-const LoginPage = lazy(() =>
-  import('./pages/LoginPage' /* webpackChunkName: "login-page" */),
-);
+
 const DashboardPage = lazy(() =>
-  import('./pages/DashboardPage' /* webpackChunkName: "dashboard-page" */),
+  import(
+    './pages/DashboardPage/DashboardPage' /* webpackChunkName: "dashboard-page" */
+  ),
 );
 
 function App() {
